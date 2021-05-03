@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Prototipo</string>
+    //dropdown de las categorias
+    <string-array name="cat">
+        <item>Queja</item>
+        <item>Sugerencia</item>
+        <item>Otro</item>
+    </string-array>
+
+    ///dropdown de los asuntos predeterminados
+    <string-array name="asuntos">
+        <item>Administrativos</item>
+        <item>Maestros</item>
+        <item>Mantenimiento</item>
+        <item>Plataformas</item>
+        <item>Otro</item>
+    </string-array>
+
+</resources>
