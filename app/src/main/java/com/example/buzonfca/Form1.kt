@@ -13,10 +13,12 @@ import kotlinx.android.synthetic.main.activity_form1.*
 
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-
+    //lateinit var matricula: tex
     override fun onCreate(savedInstanceState: Bundle?) {
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("Matricula")
+        val myRef2 = database.getReference("Categoria")
+        val myRef3 = database.getReference("Asunto")
+        val myRef = database.getReference("Comentario")
 
 
         super.onCreate(savedInstanceState)
@@ -31,9 +33,15 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
         //BOTON DE ENVIAR
         enviar.setOnClickListener {
+            var cat: Spinner = findViewById(R.id.spinner)
+            var cate = cat.selectedItem.toString()
+            var asu: Spinner = findViewById(R.id.spinner2)
+            var asunto = asu.selectedItem.toString()
             var mat = editTextTextMultiLine.text.toString()
-            //var m = mat.text.toString()
             myRef.setValue(mat)
+            myRef2.setValue(cate)
+            myRef3.setValue(asunto)
+            
             val intent = Intent(this, FolioView::class.java)
             startActivity(intent)
         }
