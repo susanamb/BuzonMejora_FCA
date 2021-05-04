@@ -6,103 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    2
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="133dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="48dp"
+        android:text="Hola!"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="350dp"
         android:text="Buzon de Mejora Continua"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
         android:id="@+id/iniciarbtn"
-        android:layout_width="242dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/boton_redondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="onTap"
-        android:text="Queja o sugerencia"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#121111"
+        android:text="Iniciar"
         android:textSize="18sp"
-        app:backgroundTint="#fbc02d"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
         tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/consul"
-        android:layout_width="242dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/boton_redondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="onTap"
         android:text="Consultar"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#121111"
-        android:textSize="18sp"
-        app:backgroundTint="#fbc02d"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iniciarbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923"
         tools:ignore="OnClick" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="353dp"
+        android:layout_height="169dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logofca" />
 
     <Button
         android:id="@+id/log"
-
-        android:layout_width="67dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/boton_redondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="52dp"
         android:onClick="onTap"
         android:text="S.A"
-        app:backgroundTint="#fbc02d"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintEnd_toStartOf="@+id/consul"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         tools:ignore="OnClick" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="67dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/boton_redondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="356dp"
+        android:layout_marginLeft="356dp"
+        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_help" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="246dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fca" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
