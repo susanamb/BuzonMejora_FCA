@@ -1,18 +1,24 @@
 package com.example.buzonfca
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
-import androidx.core.view.isInvisible
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_form1.*
 
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("Matricula")
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
 
@@ -25,6 +31,9 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
         //BOTON DE ENVIAR
         enviar.setOnClickListener {
+            var mat = editTextTextMultiLine.text.toString()
+            //var m = mat.text.toString()
+            myRef.setValue(mat)
             val intent = Intent(this, FolioView::class.java)
             startActivity(intent)
         }
@@ -34,6 +43,8 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     
         val asunto: Spinner = findViewById(R.id.spinner2)
         asunto.onItemSelectedListener = this
+
+
     }
     //RADIO BUTTONS
 
@@ -61,5 +72,6 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
     }
+
 
 }

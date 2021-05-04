@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "912894005839",
+    "project_id": "buzonmejorafca",
+    "storage_bucket": "buzonmejorafca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912894005839:android:bcc584efdb2bbdc4fdd03a",
+        "android_client_info": {
+          "package_name": "com.example.buzonfca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912894005839-setibdvnoogv2gtgbeo8rg22q4a6vo42.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9s2SLUy15v4ae4Lb1auK5Ussx4kEDYn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912894005839-setibdvnoogv2gtgbeo8rg22q4a6vo42.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
