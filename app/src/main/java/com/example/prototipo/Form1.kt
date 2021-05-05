@@ -1,20 +1,27 @@
 package com.example.prototipo
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
-import androidx.core.view.isInvisible
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_form1.*
 
-
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
+
+
+
+
+        //scroll del texto
+       val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
+        desc.setMovementMethod(ScrollingMovementMethod());
 
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
