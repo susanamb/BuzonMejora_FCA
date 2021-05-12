@@ -12,7 +12,7 @@
         android:layout_height="88dp"
         android:layout_marginStart="67dp"
         android:layout_marginLeft="67dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="67dp"
         android:layout_marginRight="67dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,17 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/fca" />
-
-    <TextView
-        android:id="@+id/folio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:text="Folio:"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -40,14 +29,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="24dp"
 
+        android:layout_marginEnd="70dp"
         android:layout_marginRight="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/folio">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -59,7 +48,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Consutar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -70,7 +59,7 @@
         android:id="@+id/textView9"
         android:layout_width="377dp"
         android:layout_height="186dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="status"
         android:textSize="24sp"
         android:visibility="invisible"
@@ -83,7 +72,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:text="Consulta tu queja/sugerencia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
