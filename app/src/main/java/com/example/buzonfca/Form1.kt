@@ -8,18 +8,18 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_form1.*
 
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     //lateinit var matricula: tex
+    //private lateinit var getdb : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         val database = FirebaseDatabase.getInstance()
-        val myRef2 = database.getReference("Categoria")
-        val myRef3 = database.getReference("Asunto")
-        val myRef = database.getReference("Comentario")
-
+        val myRef = database.getReference("Quejas y Sugerencias")
+        val con = "0001"
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
@@ -32,16 +32,19 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
         //BOTON DE ENVIAR
+
         enviar.setOnClickListener {
+
             var cat: Spinner = findViewById(R.id.spinner)
             var cate = cat.selectedItem.toString()
             var asu: Spinner = findViewById(R.id.spinner2)
             var asunto = asu.selectedItem.toString()
             var mat = editTextTextMultiLine.text.toString()
-            myRef.setValue(mat)
-            myRef2.setValue(cate)
-            myRef3.setValue(asunto)
-            
+
+            myRef.child(con).child("Categoria").setValue(cate)
+            myRef.child("$con/asunto").setValue(asunto)
+            myRef.child("$con/Comentario").setValue(mat)
+
             val intent = Intent(this, FolioView::class.java)
             startActivity(intent)
         }
