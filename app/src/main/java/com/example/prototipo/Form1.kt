@@ -8,7 +8,7 @@ import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.buzonfca.R
+
 import kotlinx.android.synthetic.main.activity_form1.*
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
