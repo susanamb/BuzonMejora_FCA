@@ -3,6 +3,7 @@ package com.example.prototipo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.buzonfca.R
 import kotlinx.android.synthetic.main.activity_folio_view.*
 
 class FolioView : AppCompatActivity() {

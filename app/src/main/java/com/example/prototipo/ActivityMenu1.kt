@@ -2,6 +2,7 @@ package com.example.prototipo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.buzonfca.R
 
 class ActivityMenu1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
