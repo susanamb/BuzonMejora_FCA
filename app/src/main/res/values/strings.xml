@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Prototipo</string>
+    <string name="app_name">Buzon de Mejora</string>
     //dropdown de las categorias
     <string-array name="cat">
         <item>Queja</item>

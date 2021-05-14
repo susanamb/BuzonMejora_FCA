@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.prototipo">
+    package="com.example.buzonfca">
 
     <application
         android:allowBackup="true"
@@ -9,6 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo">
+<<<<<<< HEAD
+        <activity android:name="com.example.buzonfca.login"></activity>
+        <activity android:name="com.example.buzonfca.Form1" />
+        <activity android:name="com.example.buzonfca.FolioView" />
+        <activity
+            android:name="com.example.buzonfca.ActivityMenu1"
+            android:parentActivityName="com.example.buzonfca.MainActivity" />
+        <activity android:name="com.example.buzonfca.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+=======
 
         <activity android:name=".SplashPantalla" android:theme="@style/Theme.Buzon2">
 
@@ -27,6 +38,7 @@
             android:name=".ActivityMenu1"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
+>>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e
 
         </activity>
     </application>

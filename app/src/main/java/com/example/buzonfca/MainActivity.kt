@@ -1,11 +1,14 @@
-package com.example.prototipo
+package com.example.buzonfca
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< HEAD:app/src/main/java/com/example/buzonfca/MainActivity.kt
+=======
 import android.util.Log.i
 import android.view.View
 
+>>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e:app/src/main/java/com/example/prototipo/MainActivity.kt
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
@@ -15,6 +18,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
+
 
         iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)

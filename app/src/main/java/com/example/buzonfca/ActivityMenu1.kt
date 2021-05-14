@@ -1,4 +1,4 @@
-package com.example.prototipo
+package com.example.buzonfca
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
