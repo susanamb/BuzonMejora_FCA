@@ -4,11 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logotipo3"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo">
+<<<<<<< HEAD
         <activity android:name="com.example.buzonfca.login"></activity>
         <activity android:name="com.example.buzonfca.Form1" />
         <activity android:name="com.example.buzonfca.FolioView" />
@@ -18,9 +19,27 @@
         <activity android:name="com.example.buzonfca.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+=======
 
+        <activity android:name=".SplashPantalla" android:theme="@style/Theme.Buzon2">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".login" />
+        <activity android:name=".Form1"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
+        <activity android:name=".FolioView" />
+        <activity
+            android:name=".ActivityMenu1"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity">
+>>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e
+
         </activity>
     </application>
 
