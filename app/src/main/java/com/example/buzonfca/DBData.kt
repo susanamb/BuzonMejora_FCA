@@ -1,4 +1,3 @@
 package com.example.buzonfca
 
-class DBData {
-}
+data class DBData(var categoria : String ?= null,var asunto : String ?= null,var comentario : String ?= null)
