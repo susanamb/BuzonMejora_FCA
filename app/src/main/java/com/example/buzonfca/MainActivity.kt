@@ -3,6 +3,12 @@ package com.example.buzonfca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< HEAD:app/src/main/java/com/example/buzonfca/MainActivity.kt
+=======
+import android.util.Log.i
+import android.view.View
+
+>>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e:app/src/main/java/com/example/prototipo/MainActivity.kt
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){

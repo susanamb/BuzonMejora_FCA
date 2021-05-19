@@ -2,6 +2,7 @@ package com.example.buzonfca
 
 import android.content.Intent
 import android.os.Bundle
+<<<<<<< HEAD:app/src/main/java/com/example/buzonfca/Form1.kt
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
@@ -11,11 +12,24 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_form1.*
+=======
+import android.text.method.ScrollingMovementMethod
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Spinner
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+>>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e:app/src/main/java/com/example/prototipo/Form1.kt
 
+import kotlinx.android.synthetic.main.activity_form1.*
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+<<<<<<< HEAD:app/src/main/java/com/example/buzonfca/Form1.kt
     //lateinit var matricula: tex
     //private lateinit var getdb : DatabaseReference
+=======
+
+>>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e:app/src/main/java/com/example/prototipo/Form1.kt
     override fun onCreate(savedInstanceState: Bundle?) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
@@ -23,6 +37,13 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
+
+
+
+
+        //scroll del texto
+       val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
+        desc.setMovementMethod(ScrollingMovementMethod());
 
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
