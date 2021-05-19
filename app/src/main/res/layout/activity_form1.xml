@@ -21,7 +21,9 @@
             android:layout_width="311dp"
             android:layout_height="117dp"
             android:layout_marginStart="8dp"
+
             android:layout_marginTop="112dp"
+
             android:layout_marginEnd="8dp"
             android:background="@drawable/edit"
             android:elevation="8dp"
@@ -66,14 +68,24 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> df2a4278abd13289f9940d76da2cccdc21ade338
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contenido"
             android:textSize="20sp"
+<<<<<<< HEAD
             tools:layout_editor_absoluteX="48dp"
             tools:layout_editor_absoluteY="377dp" />
+=======
+
+            />
+>>>>>>> df2a4278abd13289f9940d76da2cccdc21ade338
 
         <Spinner
             android:id="@+id/spinner2"
@@ -85,6 +97,7 @@
             app:layout_constraintHorizontal_bias="0.908"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
@@ -98,6 +111,37 @@
             app:layout_constraintBottom_toTopOf="@+id/spinner2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="259dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="266dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2">
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
             android:id="@+id/correo"
@@ -133,6 +177,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/correo"
             />
+
 
         <TextView
             android:id="@+id/textView"

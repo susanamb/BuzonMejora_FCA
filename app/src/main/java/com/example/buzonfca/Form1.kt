@@ -2,6 +2,7 @@ package com.example.buzonfca
 
 import android.content.Intent
 import android.os.Bundle
+<<<<<<< HEAD:app/src/main/java/com/example/buzonfca/Form1.kt
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
@@ -11,7 +12,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_form1.*
+import android.text.method.ScrollingMovementMethod
 
+import android.widget.TextView
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     //lateinit var matricula: tex
@@ -27,6 +30,13 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
+
+
+
+
+        //scroll del texto
+       val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
+        desc.setMovementMethod(ScrollingMovementMethod());
 
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
