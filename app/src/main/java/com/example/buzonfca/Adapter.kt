@@ -20,9 +20,9 @@ class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<A
 
         val currentitem = dataList[position]
 
-        holder.categoria.text = currentitem.categoria
-        holder.asunto.text = currentitem.asunto
-        holder.comentario.text = currentitem.comentario
+        holder.categoria.text = currentitem.Categoria
+        holder.asunto.text = currentitem.Asunto
+        holder.status.text = currentitem.Status
 
     }
 
@@ -36,7 +36,7 @@ class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<A
 
         val categoria : TextView = itemView.findViewById(R.id.categoria)
         val asunto : TextView = itemView.findViewById(R.id.asunto)
-        val comentario : TextView = itemView.findViewById(R.id.comentario)
+        val status : TextView = itemView.findViewById(R.id.status)
 
     }
 

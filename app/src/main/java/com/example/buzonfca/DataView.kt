@@ -15,8 +15,7 @@ class DataView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_view)
-
-        dataRecyclerview = findViewById(R.id.quejasugerencias)
+        dataRecyclerview = findViewById(R.id.dataList)
         dataRecyclerview.layoutManager = LinearLayoutManager(this)
         dataRecyclerview.setHasFixedSize(true)
 
@@ -28,7 +27,6 @@ class DataView : AppCompatActivity() {
     private fun getUserData() {
 
         dbref = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
-
         dbref.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -37,14 +35,11 @@ class DataView : AppCompatActivity() {
 
                     for (userSnapshot in snapshot.children){
 
-
-                        val data = userSnapshot.getValue(DBData::class.java)
-                        dataList.add(data!!)
+                        val dato = userSnapshot.getValue(DBData::class.java)
+                        dataList.add(dato!!)
 
                     }
-
                     dataRecyclerview.adapter = Adapter(dataList)
-
 
                 }
 
@@ -53,7 +48,6 @@ class DataView : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
 
         })
 

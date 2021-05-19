@@ -59,10 +59,14 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             asu.selectedItem.toString()
                         }
                         var mat = editTextTextMultiLine.text.toString()
-
+                        var correo = correo.text.toString()
                         myRef.child("$con/Categoria").setValue(cate)
                         myRef.child("$con/Asunto").setValue(asunt)
                         myRef.child("$con/Comentario").setValue(mat)
+                        if (correo != null) {
+                            myRef.child("$con/Correo").setValue(correo)
+                        }
+                        myRef.child("$con/Status").setValue("Pendiente, sin leer")
                         i = false
                     }
 

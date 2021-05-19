@@ -16,12 +16,8 @@ class FolioView : AppCompatActivity() {
 
         textView11.text = folio
 
-        /*submit.setOnClickListener {
+        submit.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }*/
-        submit.setOnClickListener{
-            val intent = Intent(this, DataView::class.java)
             startActivity(intent)
         }
 
