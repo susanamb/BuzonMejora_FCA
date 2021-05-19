@@ -4,7 +4,6 @@
     <string-array name="cat">
         <item>Queja</item>
         <item>Sugerencia</item>
-        <item>Otro</item>
     </string-array>
 
     ///dropdown de los asuntos predeterminados

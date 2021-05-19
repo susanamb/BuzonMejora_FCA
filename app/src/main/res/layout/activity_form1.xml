@@ -66,17 +66,14 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:text="Contenido"
             android:textSize="20sp"
-            />
+            tools:layout_editor_absoluteX="48dp"
+            tools:layout_editor_absoluteY="377dp" />
 
         <Spinner
             android:id="@+id/spinner2"
@@ -91,23 +88,16 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
-            android:layout_width="259dp"
-            android:layout_height="45dp"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="-10dp"
-            tools:layout_editor_absoluteY="16dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout4"
-            android:layout_width="266dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="201dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/spinner2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner2">
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
         <EditText
             android:id="@+id/correo"
@@ -168,6 +158,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+        <EditText
+            android:id="@+id/otro"
+            android:layout_width="190dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="57dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="asunto"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

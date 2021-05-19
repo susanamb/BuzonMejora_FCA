@@ -11,8 +11,7 @@ class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.queja_sugerencia,
-                parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.queja_sugerencia, parent,false)
         return MyViewHolder(itemView)
 
     }

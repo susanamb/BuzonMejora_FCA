@@ -1,7 +1,10 @@
 package com.example.buzonfca
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +18,8 @@ class login : AppCompatActivity() {
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
+
+
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

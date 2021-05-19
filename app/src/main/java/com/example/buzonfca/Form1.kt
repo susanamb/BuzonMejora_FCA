@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
-import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_form1.*
 
 
@@ -19,8 +19,9 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
-        val con = "0001"
-
+        var con = ""
+        var i = true
+        var asunt =""
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
 
@@ -34,18 +35,44 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //BOTON DE ENVIAR
 
         enviar.setOnClickListener {
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (i) {
+                        con = dataSnapshot.childrenCount.toString()
+                        when (con.length) {
+                            1 -> {
+                                con = "000$con"
+                            }
+                            2 -> {
+                                con = "00$con"
+                            }
+                            3 -> {
+                                con = "0$con"
+                            }
+                        }
+                        var cat: Spinner = findViewById(R.id.spinner)
+                        var cate = cat.selectedItem.toString()
+                        var asu: Spinner = findViewById(R.id.spinner2)
+                        asunt = if(asu.selectedItemPosition == (asu.count)-1){
+                            otro.text.toString()
+                        }else {
+                            asu.selectedItem.toString()
+                        }
+                        var mat = editTextTextMultiLine.text.toString()
 
-            var cat: Spinner = findViewById(R.id.spinner)
-            var cate = cat.selectedItem.toString()
-            var asu: Spinner = findViewById(R.id.spinner2)
-            var asunto = asu.selectedItem.toString()
-            var mat = editTextTextMultiLine.text.toString()
+                        myRef.child("$con/Categoria").setValue(cate)
+                        myRef.child("$con/Asunto").setValue(asunt)
+                        myRef.child("$con/Comentario").setValue(mat)
+                        i = false
+                    }
 
-            myRef.child(con).child("Categoria").setValue(cate)
-            myRef.child("$con/asunto").setValue(asunto)
-            myRef.child("$con/Comentario").setValue(mat)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
 
             val intent = Intent(this, FolioView::class.java)
+            intent.putExtra("Folio"," $con")
             startActivity(intent)
         }
         
@@ -58,8 +85,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     }
     //RADIO BUTTONS
-
-    //BACK BUTTON
+   //BACK BUTTON
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
@@ -67,22 +93,22 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     //SPINNERS
     override fun onNothingSelected(parent: AdapterView<*>?) {
         textInputLayout3.visibility = View.INVISIBLE
-        textInputLayout4.visibility = View.INVISIBLE
+        otro.visibility = View.INVISIBLE
     }
-    //SPINNERS ACTION
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        ///val a = R.id.spinner2
-        //textView3.text = a.toString()
+
+   //SPINNERS ACTION
+    override fun onItemSelected(parent: AdapterView<*>?, vositiew: View?, pion: Int, id: Long) {
         if (parent != null) {
-            var pos = parent.selectedItemPosition
-            if(pos == (parent.count)-1){
-                textInputLayout3.visibility = View.VISIBLE
-            }else{
-                textInputLayout3.visibility = View.INVISIBLE
-            }
+               var pos = parent.selectedItemPosition
+               if(pos == (parent.count)-1){
+                   otro.visibility = View.VISIBLE
+
+               }else{
+                  otro.visibility = View.INVISIBLE
+
+               }
+           }
+
         }
 
     }
-
-
-}

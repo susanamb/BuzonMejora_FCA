@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity(){
 
         //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
 
-
         iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)
             startActivity(intent)

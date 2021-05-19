@@ -38,8 +38,8 @@ class DataView : AppCompatActivity() {
                     for (userSnapshot in snapshot.children){
 
 
-                        val user = userSnapshot.getValue(DBData::class.java)
-                        dataList.add(user!!)
+                        val data = userSnapshot.getValue(DBData::class.java)
+                        dataList.add(data!!)
 
                     }
 
