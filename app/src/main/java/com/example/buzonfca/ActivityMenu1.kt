@@ -8,6 +8,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_menu1.*
 
+
 class ActivityMenu1 : AppCompatActivity() {
 
     private lateinit var database : DatabaseReference

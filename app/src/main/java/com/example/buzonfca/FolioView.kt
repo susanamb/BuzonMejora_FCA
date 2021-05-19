@@ -3,6 +3,7 @@ package com.example.buzonfca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import kotlinx.android.synthetic.main.activity_folio_view.*
 import kotlinx.android.synthetic.main.activity_form1.*
 import kotlinx.android.synthetic.main.activity_login.*

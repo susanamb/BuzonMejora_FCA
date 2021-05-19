@@ -122,3 +122,4 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
     }
+
