@@ -16,12 +16,15 @@ import kotlinx.android.synthetic.main.activity_form1.*
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     //lateinit var matricula: tex
     //private lateinit var getdb : DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
         var con = ""
         var i = true
         var asunt =""
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
 
@@ -32,10 +35,12 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
+
         //BOTON DE ENVIAR
 
         enviar.setOnClickListener {
             myRef.addValueEventListener(object : ValueEventListener {
+
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (i) {
                         con = dataSnapshot.childrenCount.toString()
@@ -60,6 +65,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         }
                         var mat = editTextTextMultiLine.text.toString()
                         var correo = correo.text.toString()
+
                         myRef.child("$con/Categoria").setValue(cate)
                         myRef.child("$con/Asunto").setValue(asunt)
                         myRef.child("$con/Comentario").setValue(mat)
