@@ -2,7 +2,6 @@ package com.example.buzonfca
 
 import android.content.Intent
 import android.os.Bundle
-<<<<<<< HEAD:app/src/main/java/com/example/buzonfca/Form1.kt
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
@@ -25,14 +24,10 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val myRef = database.getReference("Quejas y Sugerencias")
         var con = ""
         var i = true
-        var asunt =""
 
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
-
-
-
 
         //scroll del texto
        val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
@@ -68,19 +63,19 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         var cat: Spinner = findViewById(R.id.spinner)
                         var cate = cat.selectedItem.toString()
                         var asu: Spinner = findViewById(R.id.spinner2)
-                        asunt = if(asu.selectedItemPosition == (asu.count)-1){
+                        var asunt = if(asu.selectedItemPosition == (asu.count)-1){
                             otro.text.toString()
                         }else {
                             asu.selectedItem.toString()
                         }
                         var mat = editTextTextMultiLine.text.toString()
-                        var correo = correo.text.toString()
 
                         myRef.child("$con/Categoria").setValue(cate)
                         myRef.child("$con/Asunto").setValue(asunt)
                         myRef.child("$con/Comentario").setValue(mat)
-                        if (correo != null) {
-                            myRef.child("$con/Correo").setValue(correo)
+                        if (correo.text.isNotEmpty()) {
+                            var mail = correo.text.toString()
+                            myRef.child("$con/Correo").setValue(mail)
                         }
                         myRef.child("$con/Status").setValue("Pendiente, sin leer")
                         i = false

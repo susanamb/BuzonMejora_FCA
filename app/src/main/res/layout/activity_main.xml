@@ -6,11 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> df2a4278abd13289f9940d76da2cccdc21ade338
 
     <TextView
         android:id="@+id/textView"

@@ -39,6 +39,7 @@ class ActivityMenu1 : AppCompatActivity() {
                         Toast.makeText(this,"Consulta exitosa ",Toast.LENGTH_SHORT).show()
 
                     }else{
+                        textView9.text = " "
                         Toast.makeText(this,"El folio ingresado no existe",Toast.LENGTH_SHORT).show()
                     }
                 }.addOnFailureListener {
@@ -46,6 +47,7 @@ class ActivityMenu1 : AppCompatActivity() {
                 }
 
             }else{
+                textView9.text = " "
                 Toast.makeText(this,"Ingrese el folio a consultar",Toast.LENGTH_SHORT).show()
             }
 
