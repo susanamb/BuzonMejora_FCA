@@ -21,7 +21,9 @@
             android:layout_width="311dp"
             android:layout_height="117dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="68dp"
+
+            android:layout_marginTop="112dp"
+
             android:layout_marginEnd="8dp"
             android:background="@drawable/edit"
             android:elevation="8dp"
@@ -66,7 +68,8 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
-<<<<<<< HEAD
+
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
@@ -76,7 +79,9 @@
             android:layout_marginRight="40dp"
             android:text="Contenido"
             android:textSize="20sp"
-=======
+
+            />
+
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="181dp"
@@ -88,6 +93,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3"
+            android:layout_width="259dp"
+            android:layout_height="45dp"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteX="-10dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4"
+            android:layout_width="266dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
             android:layout_width="259dp"
@@ -96,7 +124,6 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:visibility="invisible"
->>>>>>> 1b2d70806a6f4d7fd08282dd61cafc10361dcd6e
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner">
 
@@ -150,7 +177,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/correo" />
+            app:layout_constraintTop_toBottomOf="@+id/correo"
+            />
+
 
         <TextView
             android:id="@+id/textView"
@@ -177,22 +206,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-        <Button
-            android:id="@+id/enviar"
-            android:layout_width="122dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginLeft="140dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="140dp"
-            android:layout_marginRight="140dp"
-            android:onClick="onTap"
-            android:text="Enviar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
-            tools:ignore="OnClick" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
