@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginTop="0dp"
 
     tools:context=".Form1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="1dp"
 
         >
@@ -20,19 +20,20 @@
 
         <EditText
             android:id="@+id/editTextTextMultiLine"
-            android:layout_width="345dp"
-            android:layout_height="151dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp"
             android:background="@drawable/edit"
             android:elevation="8dp"
             android:ems="10"
             android:gravity="top"
             android:hint="Ingresa tu queja o sugerencia"
-            android:inputType="textMultiLine"
+            android:inputType="textCapWords"
+
             android:paddingLeft="7dp"
             android:paddingTop="10dp"
             android:scrollbarStyle="insideOverlay"
@@ -61,31 +62,46 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="212dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="28dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+
+            android:elevation="1dp"
             android:entries="@array/cat"
             app:layout_constraintEnd_toEndOf="parent"
-            android:elevation="6dp"
-            app:layout_constraintHorizontal_bias="0.173"
+            app:layout_constraintHorizontal_bias="0.989"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="212dp"
-            android:layout_height="41dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="68dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+
+            android:elevation="1dp"
             android:entries="@array/asuntos"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.181"
+            app:layout_constraintHorizontal_bias="0.988"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
         <EditText
             android:id="@+id/correo"
-            android:layout_width="345dp"
+            android:layout_width="match_parent"
             android:layout_height="49dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp"
             android:background="@drawable/edit"
             android:drawableLeft="@drawable/ic_email"
             android:elevation="5dp"
@@ -100,9 +116,13 @@
 
         <Button
             android:id="@+id/enviar"
-            android:layout_width="106dp"
+            android:layout_width="match_parent"
             android:layout_height="51dp"
+            android:layout_marginStart="122dp"
+            android:layout_marginLeft="122dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="122dp"
+            android:layout_marginRight="122dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/boton_redondo"
             android:elevation="8dp"
@@ -111,7 +131,6 @@
             app:backgroundTint="@color/ColorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/correo"
             app:layout_constraintVertical_bias="0.0" />
@@ -120,28 +139,30 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="42dp"
             android:text="Motivo"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.089"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <TextView
             android:id="@+id/textView7"
-            style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginBottom="32dp"
             android:text="Asunto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintBottom_toTopOf="@+id/otro"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.333" />
 
         <EditText
             android:id="@+id/otro"
+
             android:layout_width="213dp"
             android:layout_height="44dp"
             android:layout_marginTop="32dp"
@@ -167,14 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="30dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="149dp" />
+            app:layout_constraintGuide_begin="3dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
