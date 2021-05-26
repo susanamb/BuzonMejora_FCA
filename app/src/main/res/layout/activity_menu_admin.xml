@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".MenuAdmin">
 
 
     <TextView
@@ -27,7 +26,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/boton_redondo"
         android:onClick="onTap"
-        android:text="Queja o sugerencia"
+        android:text="Ver Pendientes"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#121111"
         android:textSize="18sp"
@@ -41,19 +40,19 @@
         tools:ignore="OnClick" />
 
     <Button
-        android:id="@+id/sugerenciasbtn"
+        android:id="@+id/todobtn"
         android:layout_width="242dp"
         android:layout_height="86dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/boton_redondo"
         android:onClick="onTap"
-        android:text="Consultar"
+        android:text="Ver todo"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#121111"
         android:textSize="18sp"
         app:backgroundTint="#fbc02d"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,24 +60,23 @@
         tools:ignore="OnClick" />
 
     <Button
-        android:id="@+id/log"
-
-        android:layout_width="67dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-
-        android:layout_marginBottom="8dp"
+        android:id="@+id/logoutbtn"
+        android:layout_width="243dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="320dp"
         android:background="@drawable/boton_redondo"
         android:onClick="onTap"
-        android:text="S.A"
+        android:text="Cerrar sesión"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#121111"
+        android:textSize="18sp"
         app:backgroundTint="#fbc02d"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/pendientesbtn"
         tools:ignore="OnClick" />
 
     <ImageButton
@@ -105,37 +103,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/fca" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginBottom="92dp"
-        android:text="0"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
-        android:layout_marginBottom="7dp"
-        android:text="Casos resueltos"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
