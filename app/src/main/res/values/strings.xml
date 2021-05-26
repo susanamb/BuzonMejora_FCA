@@ -28,10 +28,16 @@
 
     ///dropdown de las consultas ordenar por:
     <string-array name="ordenar">
-        <item>Todo</item>
-        <item>Fecha</item>
-        <item>Pendientes</item>
-        <item>Resueltos</item>
+        <item>Reciente</item>
+        <item>Antiguos</item>
+    </string-array>
+
+    ///dropdown de los posibles seguimientos:
+    <string-array name="seguimiento">
+        <item>Pendiente</item>
+        <item>Resuelto</item>
+        <item>Falta informacion</item>
+
     </string-array>
 
 </resources>

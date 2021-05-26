@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_menu1.*
 
 
+
 class ActivityMenu1 : AppCompatActivity() {
 
     private lateinit var database : DatabaseReference
@@ -43,7 +44,7 @@ class ActivityMenu1 : AppCompatActivity() {
                         Toast.makeText(this,"El folio ingresado no existe",Toast.LENGTH_SHORT).show()
                     }
                 }.addOnFailureListener {
-                    Toast.makeText(this, "Error 404", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                 }
 
             }else{

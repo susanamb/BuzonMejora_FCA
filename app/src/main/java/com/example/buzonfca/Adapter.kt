@@ -8,11 +8,22 @@ import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
+    private lateinit var mListener : onItemClickListener //new
+
+    interface onItemClickListener{ // new
+
+        fun onItemClick(position: Int) // new
+    }
+
+    fun setOnClickListener(listener : onItemClickListener){ //new
+
+        mListener = listener //new
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.queja_sugerencia, parent,false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(itemView,mListener) //added mlistener
 
     }
 
@@ -32,12 +43,19 @@ class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<A
     }
 
 
-    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    class MyViewHolder(itemView : View, listener : onItemClickListener) : RecyclerView.ViewHolder(itemView){
 
         val categoria : TextView = itemView.findViewById(R.id.categoria)
         val asunto : TextView = itemView.findViewById(R.id.asunto)
         val status : TextView = itemView.findViewById(R.id.status)
 
+        init{ // new
+
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }//new
+
+        }
     }
 
 }
