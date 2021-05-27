@@ -9,8 +9,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_form1.*
-import kotlinx.android.synthetic.main.activity_menu1.*
 import kotlinx.android.synthetic.main.activity_selected_q_s.*
 
 class SelectedQS : AppCompatActivity() {
@@ -66,17 +64,20 @@ class SelectedQS : AppCompatActivity() {
 
                     Toast.makeText(this, "Consulta exitosa ", Toast.LENGTH_SHORT).show()
 
+                }else{
+                    Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
-        button.setOnClickListener {
+        update.setOnClickListener {
             var seg: Spinner = findViewById(R.id.spinner5)
             var seguimiento = seg.selectedItem.toString()
             if(otros.text.isNotEmpty()){
-                var sa = otros.text
+                var sa = otros.text.toString()
                 myRef.child("$folio/SAComentario").setValue(sa)
-
+            }else{
+                Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
             }
             myRef.child("$folio/Status").setValue(seguimiento)
 
