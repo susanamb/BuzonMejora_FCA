@@ -65,7 +65,7 @@
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="47dp"
             android:layout_marginStart="143dp"
             android:layout_marginLeft="143dp"
             android:layout_marginTop="36dp"

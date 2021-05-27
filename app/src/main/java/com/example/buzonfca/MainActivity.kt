@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_menu_admin.*
 
 class MainActivity : AppCompatActivity(){
 
@@ -17,12 +18,12 @@ class MainActivity : AppCompatActivity(){
 
         //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
 
-        pendientesbtn.setOnClickListener{
+        iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)
             startActivity(intent)
         }
 
-        sugerenciasbtn.setOnClickListener{
+        consul.setOnClickListener{
             val intents = Intent(this, ActivityMenu1::class.java)
             startActivity(intents)
         }
