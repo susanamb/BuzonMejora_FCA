@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity(){
 
         //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
 
-        pendientesbtn.setOnClickListener{
+        iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)
             startActivity(intent)
         }
 
-        sugerenciasbtn.setOnClickListener{
+        consul.setOnClickListener{
             val intents = Intent(this, ActivityMenu1::class.java)
             startActivity(intents)
         }

@@ -42,7 +42,8 @@ class DataView : AppCompatActivity(){
 
     }
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        val intent = Intent(this, MenuAdmin::class.java)
+        startActivity(intent)
         return true
     }
 
@@ -74,7 +75,7 @@ class DataView : AppCompatActivity(){
                     adapt.setOnClickListener(object : Adapter.onItemClickListener{
 
                         override fun onItemClick(position: Int) {
-                            val folio = position.toString()
+                            val folio = (position+1).toString()
 
                             val intent = Intent(this@DataView, SelectedQS::class.java)
                             intent.putExtra("folio",folio)

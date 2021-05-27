@@ -64,13 +64,9 @@
 
         <Button
             android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="143dp"
-            android:layout_marginLeft="143dp"
+            android:layout_width="168dp"
+            android:layout_height="46dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="143dp"
-            android:layout_marginRight="143dp"
             android:background="@drawable/boton_redondo"
             android:onClick="onTap"
             android:text="Aceptar"
@@ -78,7 +74,6 @@
             app:backgroundTint="#fbc02d"
             app:iconTint="#171515"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11"
             tools:ignore="OnClick" />

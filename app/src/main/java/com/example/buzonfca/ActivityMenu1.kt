@@ -34,13 +34,18 @@ class ActivityMenu1 : AppCompatActivity() {
                 database = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
                 database.child(folio).get().addOnSuccessListener {
                     if(it.exists()){
-                        val stat = it.child("Status").value
-                        textView9.text = stat.toString()
+                        var stat = it.child("Status").value
+                        if(it.child("SAComentario").exists()){
+                            val sacom = it.child("SAComentario").value
+                            stat = "$stat, \n $sacom"
+                        }
+
+                        textView20.text = stat.toString()
 
                         Toast.makeText(this,"Consulta exitosa ",Toast.LENGTH_SHORT).show()
 
                     }else{
-                        textView9.text = " "
+                        textView20.text = " "
                         Toast.makeText(this,"El folio ingresado no existe",Toast.LENGTH_SHORT).show()
                     }
                 }.addOnFailureListener {

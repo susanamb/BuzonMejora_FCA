@@ -3,11 +3,14 @@ package com.example.buzonfca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
-class FilteredData : AppCompatActivity() {
+class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var dbref : DatabaseReference
     private lateinit var dataRecyclerview : RecyclerView
@@ -31,21 +34,22 @@ class FilteredData : AppCompatActivity() {
         dataRecyclerview.setHasFixedSize(true)
 
         dataList = arrayListOf<DBData>()
-        getUserData()
+        getUserData(path = "Status", value = "Pendiente")
 
 
     }
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        val intent = Intent(this, MenuAdmin::class.java)
+        startActivity(intent)
         return true
     }
 
 
-    private fun getUserData() {
+    private fun getUserData(path : String, value:String) {
 
         dbref = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
         //dbref.addValueEventListener(object : ValueEventListener {
-        val query : Query = dbref.orderByChild("Status").startAt("Pendiente,")
+        val query : Query = dbref.orderByChild("$path").startAt("$value")
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
@@ -69,7 +73,7 @@ class FilteredData : AppCompatActivity() {
                     adapt.setOnClickListener(object : Adapter.onItemClickListener{
 
                         override fun onItemClick(position: Int) {
-                            val folio = position.toString()
+                            val folio = (position+1).toString()
 
                             val intent = Intent(this@FilteredData, SelectedQS::class.java)
                             intent.putExtra("folio",folio)
@@ -84,6 +88,25 @@ class FilteredData : AppCompatActivity() {
 
     }
 
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        if (parent != null) {
+
+            var ver = parent.selectedItem.toString()
+
+            if (ver == "Queja" || ver == "Sugerencia") {
+                getUserData(path = "Categoria", value = ver)
+
+            } else if (ver == "Pendiente" || ver == "Resuelto") {
+                getUserData(path = "Status", value = ver)
+
+            }
 
 
+        }
+
+    }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login">
+    tools:context=".Login">
 
     <ImageView
         android:id="@+id/imageView"
@@ -31,9 +31,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Usuario" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,23 +53,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/entrar"
-        android:layout_width="135dp"
-        android:layout_height="53dp"
-
-        android:layout_marginTop="50dp"
-        android:background="@drawable/boton_redondo"
-        android:text="Entrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
     <TextView
         android:id="@+id/textView14"
@@ -87,6 +79,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
+    <include
+        android:id="@+id/entrar"
+        layout="@layout/btn_loading_layout"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginRight="83dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
 
     <ImageButton
         android:id="@+id/imageButton"
