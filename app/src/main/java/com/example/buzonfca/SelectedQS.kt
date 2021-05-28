@@ -46,6 +46,7 @@ class SelectedQS : AppCompatActivity() {
                     folio= "0$folio"
                 }
             }
+
             database.child(folio).get().addOnSuccessListener {
                 if (it.exists()) {
                     val categoria = it.child("Categoria").value
@@ -57,11 +58,10 @@ class SelectedQS : AppCompatActivity() {
                     textView8.text = categoria.toString()
                     textView13.text = asunto.toString()
                     textView16.text = coment.toString()
-
                     if(status == "Pendiente, sin leer") {
                         myRef.child("$folio/Status").setValue("Pendiente, leído")
-                    }
 
+                    }
                     Toast.makeText(this, "Consulta exitosa ", Toast.LENGTH_SHORT).show()
 
                 }else{
@@ -73,6 +73,7 @@ class SelectedQS : AppCompatActivity() {
         update.setOnClickListener {
             var seg: Spinner = findViewById(R.id.spinner5)
             var seguimiento = seg.selectedItem.toString()
+
             if(otros.text.isNotEmpty()){
                 var sa = otros.text.toString()
                 myRef.child("$folio/SAComentario").setValue(sa)
@@ -81,12 +82,13 @@ class SelectedQS : AppCompatActivity() {
             }
             myRef.child("$folio/Status").setValue(seguimiento)
 
-            val intent = Intent(this, DataView::class.java)
+            val intent = Intent(this, DataUpdatedView::class.java)
             startActivity(intent)
         }
     }
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        val intent = Intent(this, MenuAdmin::class.java)
+        startActivity(intent)
         return true
     }
 }

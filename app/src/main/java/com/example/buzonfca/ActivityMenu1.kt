@@ -18,6 +18,7 @@ class ActivityMenu1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu1)
 
+
         database = Firebase.database.reference
 
         val actionBar = supportActionBar
