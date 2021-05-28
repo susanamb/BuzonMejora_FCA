@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo">
-        <activity android:name=".FilteredData"></activity>
+        <activity android:name=".DataUpdatedView"></activity>
+        <activity android:name=".FilteredData" />
         <activity android:name=".MenuAdmin" />
         <activity android:name=".SelectedQS" />
         <activity android:name=".DataView" />

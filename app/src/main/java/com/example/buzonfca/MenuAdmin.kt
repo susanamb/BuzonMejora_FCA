@@ -11,10 +11,11 @@ class MenuAdmin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_admin)
 
-        pendientesbtn.setOnClickListener {
+        pendientesbtn.isEnabled = false
+        /*pendientesbtn.setOnClickListener {
             val intent = Intent(this, FilteredData::class.java)
             startActivity(intent)
-        }
+        }*/
 
         todobtn.setOnClickListener {
             val intent = Intent(this, DataView::class.java)
