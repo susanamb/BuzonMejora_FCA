@@ -4,21 +4,20 @@ import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_form1.*
-import android.text.method.ScrollingMovementMethod
 import java.text.SimpleDateFormat
-
-import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -51,65 +50,69 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         enviar.setOnClickListener {
             if(editTextTextMultiLine.text.isNotEmpty()) {
-                myRef.addValueEventListener(object : ValueEventListener {
+                val mail = correo.text.toString()
+                if(mail.isNotEmpty() && validarEmail("$mail")){
+                    myRef.addValueEventListener(object : ValueEventListener {
 
-                    @RequiresApi(Build.VERSION_CODES.N)
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        if (i) {
-                            con = (dataSnapshot.childrenCount + 1).toString()
-                            when (con.length) {
-                                1 -> {
-                                    con = "000$con"
+                        @RequiresApi(Build.VERSION_CODES.N)
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            if (i) {
+                                con = (dataSnapshot.childrenCount + 1).toString()
+                                when (con.length) {
+                                    1 -> {
+                                        con = "000$con"
+                                    }
+                                    2 -> {
+                                        con = "00$con"
+                                    }
+                                    3 -> {
+                                        con = "0$con"
+                                    }
                                 }
-                                2 -> {
-                                    con = "00$con"
+
+                                var cat: Spinner = findViewById(R.id.spinner)
+                                var cate = cat.selectedItem.toString()
+                                var asu: Spinner = findViewById(R.id.spinner2)
+                                var asunt = if (asu.selectedItemPosition == (asu.count) - 1) {
+                                    otro.text.toString()
+                                } else {
+                                    asu.selectedItem.toString()
                                 }
-                                3 -> {
-                                    con = "0$con"
+                                var mat = editTextTextMultiLine.text.toString()
+                                calendar = Calendar.getInstance()
+                                simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
+                                var fecha = simpleDateFormat.format(calendar.time).toString()
+                                //var fecha = LocalDate.now()
+
+                                myRef.child("$con/Categoria").setValue(cate)
+                                myRef.child("$con/Asunto").setValue(asunt)
+                                myRef.child("$con/Comentario").setValue(mat)
+                                if (correo.text.isNotEmpty()) {
+                                    var mail = correo.text.toString()
+                                    myRef.child("$con/Correo").setValue(mail)
                                 }
+                                myRef.child("$con/Status").setValue("Pendiente, sin leer")
+                                myRef.child("$con/Fecha").setValue(fecha)
+
+                                i = false
                             }
-
-
-                            var cat: Spinner = findViewById(R.id.spinner)
-                            var cate = cat.selectedItem.toString()
-                            var asu: Spinner = findViewById(R.id.spinner2)
-                            var asunt = if (asu.selectedItemPosition == (asu.count) - 1) {
-                                otro.text.toString()
-                            } else {
-                                asu.selectedItem.toString()
-                            }
-                            var mat = editTextTextMultiLine.text.toString()
-                            calendar = Calendar.getInstance()
-                            simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-                            var fecha = simpleDateFormat.format(calendar.time).toString()
-                            //var fecha = LocalDate.now()
-
-                            myRef.child("$con/Categoria").setValue(cate)
-                            myRef.child("$con/Asunto").setValue(asunt)
-                            myRef.child("$con/Comentario").setValue(mat)
-                            if (correo.text.isNotEmpty()) {
-                                var mail = correo.text.toString()
-                                myRef.child("$con/Correo").setValue(mail)
-                            }
-                            myRef.child("$con/Status").setValue("Pendiente, sin leer")
-                            myRef.child("$con/Fecha").setValue(fecha)
-
-                            i = false
+                            val intent = Intent(this@Form1, FolioView::class.java)
+                            intent.putExtra("Folio", " $con")
+                            startActivity(intent)
                         }
-                        val intent = Intent(this@Form1, FolioView::class.java)
-                        intent.putExtra("Folio", " $con")
-                        startActivity(intent)
-                    }
 
-                    override fun onCancelled(databaseError: DatabaseError) {
+                        override fun onCancelled(databaseError: DatabaseError) {
 
-                    }
+                        }
 
-                })
+                    })
+                }else{
+                    Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show()
+                }
+
             }else{
                 Toast.makeText(this, "Escribe tu comentario", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         val cat: Spinner = findViewById(R.id.spinner)
@@ -145,5 +148,12 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
     }
+    private fun validarEmail(email: String): Boolean {
+        val parts: Array<String> = email.split('@').toTypedArray()
+        val dominio = parts[1]
+        return dominio == "uabc.edu.mx"
+
+    }
 
 }
+
