@@ -52,9 +52,6 @@ class DataView : AppCompatActivity(){
 
         dbref = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
         dbref.addValueEventListener(object : ValueEventListener {
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
 
                 override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -66,7 +63,6 @@ class DataView : AppCompatActivity(){
                         if (dato != null) {
                             dataList.add(dato)
                         }
-
                     }
 
                     var adapt = Adapter(dataList)
@@ -80,12 +76,13 @@ class DataView : AppCompatActivity(){
                             val intent = Intent(this@DataView, SelectedQS::class.java)
                             intent.putExtra("folio",folio)
                             startActivity(intent)
-
                         }
                     })
                 }
             }
-
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
         })
 
     }
