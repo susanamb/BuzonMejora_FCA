@@ -20,7 +20,9 @@
         <activity
             android:name=".ActivityMenu1"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".SplashPantalla"
             android:theme="@style/Theme.Buzon2">

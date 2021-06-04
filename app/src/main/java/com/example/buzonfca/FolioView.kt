@@ -24,4 +24,6 @@ class FolioView : AppCompatActivity() {
 
 
     }
+
+
 }
