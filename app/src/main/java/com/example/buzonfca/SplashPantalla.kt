@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Handler
 import com.example.buzonfca.MainActivity
 
+ //VISTA DE INICIO CON ICONO DE LA FCA X 2 SEG
 class SplashPantalla : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

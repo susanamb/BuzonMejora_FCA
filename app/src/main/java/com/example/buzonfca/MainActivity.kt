@@ -17,16 +17,19 @@ class MainActivity : AppCompatActivity(){
 
         //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
 
+        //BOTON PARA PANTALLA DE REALIZAR UNA NUEVA QUEJA O SUGERENCIA
         iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)
             startActivity(intent)
         }
 
+        //BOTON PARA PANTALLA DE CONSULTA DE FOLIO
         consul.setOnClickListener{
             val intents = Intent(this, ActivityMenu1::class.java)
             startActivity(intents)
         }
 
+        //BOTON PARA PANTALLA DE INICIO DE SESION DE S.A
         log.setOnClickListener {
             val intent2 = Intent(this, Login::class.java)
             startActivity(intent2)
