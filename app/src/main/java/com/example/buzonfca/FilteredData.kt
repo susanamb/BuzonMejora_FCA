@@ -35,17 +35,10 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         dataRecyclerview.setHasFixedSize(true)
 
         dataList = arrayListOf<DBData>()
-        getUserData(path = "Status", value = "Pendiente")
 
         var cat: Spinner = findViewById(R.id.mostrar)
-        var ver = cat.selectedItem.toString()
-        if (ver == "Queja" || ver == "Sugerencia") {
-            getUserData(path = "Categoria", value = ver)
+        cat.onItemSelectedListener = this
 
-        } else if (ver == "Pendiente" || ver == "Resuelto") {
-            getUserData(path = "Status", value = ver)
-
-        }
 
     }
     override fun onSupportNavigateUp(): Boolean {
@@ -55,12 +48,11 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
 
-    private fun getUserData(path : String, value:String) {
-
+    private fun getUserData(path : String, value : String) {
         dbref = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
-        //dbref.addValueEventListener(object : ValueEventListener {
-        val query : Query = dbref.orderByChild("$path").startAt("$value")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
+        dbref.addValueEventListener(object : ValueEventListener {
+        //val query : Query = dbref.orderByChild("$path").startAt("$value")
+        //query.addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -68,8 +60,15 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                     for (userSnapshot in snapshot.children){
                         val dato = userSnapshot.getValue(DBData::class.java)
+
                         if (dato != null) {
-                            dataList.add(dato)
+                            if(path == "Categoria" && dato.Categoria == value) {
+                                dataList.add(dato)
+                            }else if(path == "Status" && dato.Status == value) {
+                                dataList.add(dato)
+                            }else{
+                                dataList.add(dato)
+                            }
                         }
 
                     }
@@ -109,12 +108,13 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             Toast.makeText(this, "Elegiste $ver", Toast.LENGTH_SHORT).show()
 
             if (ver == "Queja" || ver == "Sugerencia") {
-
                 getUserData(path = "Categoria", value = ver)
 
             } else if (ver == "Pendiente" || ver == "Resuelto") {
                 getUserData(path = "Status", value = ver)
 
+            }else{
+                getUserData(path = "", value = "")
             }
 
 
