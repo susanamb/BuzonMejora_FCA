@@ -3,6 +3,7 @@ package com.example.buzonfca
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -13,6 +14,7 @@ class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<A
     interface onItemClickListener{ // new
 
         fun onItemClick(position: Int) // new
+        fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long)
     }
 
     fun setOnClickListener(listener : onItemClickListener){ //new

@@ -15,14 +15,10 @@ class MenuAdmin : AppCompatActivity() {
         setContentView(R.layout.activity_menu_admin)
 
 
-        pendientesbtn.setOnClickListener {
-            val intent = Intent(this, FilteredData::class.java)
-            startActivity(intent)
-        }
 
         //MUESTRA PANTALLA DE LOS REGISTROS DE LA BASE DE DATOS
         todobtn.setOnClickListener {
-            val intent = Intent(this, DataView::class.java)
+            val intent = Intent(this, FilteredData::class.java)
             startActivity(intent)
         }
 

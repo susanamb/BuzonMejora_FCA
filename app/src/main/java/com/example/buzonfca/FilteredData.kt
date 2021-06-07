@@ -3,10 +3,11 @@ package com.example.buzonfca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
@@ -49,10 +50,9 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     private fun getUserData(path : String, value : String) {
+
         dbref = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
         dbref.addValueEventListener(object : ValueEventListener {
-        //val query : Query = dbref.orderByChild("$path").startAt("$value")
-        //query.addListenerForSingleValueEvent(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -62,13 +62,22 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         val dato = userSnapshot.getValue(DBData::class.java)
 
                         if (dato != null) {
+
+
                             if(path == "Categoria" && dato.Categoria == value) {
+
                                 dataList.add(dato)
-                            }else if(path == "Status" && dato.Status == value) {
-                                dataList.add(dato)
-                            }else{
-                                dataList.add(dato)
-                            }
+
+                                }else if(path == "Status" && dato.Status == value || path == "Status" &&  dato.Status!!.take(9) == value) {
+
+                                    dataList.add(dato)
+
+
+                                }else if (path == "" && value == ""){
+
+                                    dataList.add(dato)
+
+                                }
                         }
 
                     }
@@ -76,16 +85,28 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     var adapt = Adapter(dataList)
                     dataRecyclerview.adapter = adapt
 
+
+
                     adapt.setOnClickListener(object : Adapter.onItemClickListener{
 
                         override fun onItemClick(position: Int) {
-                            val folio = (position+1).toString()
+                           val folio = (position+1).toString()
 
                             val intent = Intent(this@FilteredData, SelectedQS::class.java)
                             intent.putExtra("folio",folio)
                             startActivity(intent)
-
                         }
+
+                        override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                           val a = parent[2]
+                           val b = parent.selectedItem.toString()
+
+
+                            val intent = Intent(this@FilteredData, SelectedQS::class.java)
+                            //intent.putExtra("folio",a)
+                            startActivity(intent)
+                        }
+
                     })
                 }
             }
@@ -104,17 +125,23 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if (parent != null) {
 
-            var ver = parent.selectedItem.toString()
-            Toast.makeText(this, "Elegiste $ver", Toast.LENGTH_SHORT).show()
+            var ver = parent.selectedItemPosition //posicion de la opcion seleccionada
 
-            if (ver == "Queja" || ver == "Sugerencia") {
-                getUserData(path = "Categoria", value = ver)
+            if (ver == 1 || ver == 2) { // si queja o sugerencia, quiere decir que es una categoria
+                var ver = parent.selectedItem.toString() //recoge el valor si es queja o sugerencia
+                ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
+                dataList.clear() // elimina los elementos ya en el arreglo
+                getUserData(path = "Categoria", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
-            } else if (ver == "Pendiente" || ver == "Resuelto") {
-                getUserData(path = "Status", value = ver)
+            } else if (ver == 3 || ver == 4) { // si resuelto o pendiente, quiere decir que es status
+                var ver = parent.selectedItem.toString() //recoge el valor si es resuelto o pendiente
+                ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
+                dataList.clear() // elimina los elementos ya en el arreglo
+                getUserData(path = "Status", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
             }else{
-                getUserData(path = "", value = "")
+                dataList.clear() //si hay datos los borra para guardar los nuevos
+                getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
             }
 
 

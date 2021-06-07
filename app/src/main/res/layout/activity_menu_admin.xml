@@ -29,42 +29,18 @@
                 android:textColor="@color/ColorPrimary"
                 android:textSize="30sp"
                 android:textStyle="bold"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-            <Button
-                android:id="@+id/pendientesbtn"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:layout_marginStart="82dp"
-                android:layout_marginLeft="82dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="82dp"
-                android:layout_marginRight="82dp"
-                android:background="@drawable/boton_redondo"
-                android:onClick="onTap"
-                android:text="Ver Pendientes"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#121111"
-                android:textSize="18sp"
-                app:backgroundTint="#fbc02d"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.522"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:ignore="OnClick" />
+            
 
-            <Button
+              <Button
                 android:id="@+id/todobtn"
                 android:layout_width="match_parent"
                 android:layout_height="86dp"
                 android:layout_marginStart="82dp"
                 android:layout_marginLeft="82dp"
-                android:layout_marginTop="32dp"
                 android:layout_marginEnd="82dp"
                 android:layout_marginRight="82dp"
                 android:background="@drawable/boton_redondo"
@@ -75,13 +51,12 @@
                 android:textSize="18sp"
                 app:backgroundTint="#fbc02d"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pendientesbtn"
-                tools:ignore="OnClick" />
-
+                tools:ignore="MissingConstraints,OnClick"
+                tools:layout_editor_absoluteY="240dp" />
 
             <Button
                 android:id="@+id/logoutbtn"
@@ -138,4 +113,6 @@
         app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_help" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
