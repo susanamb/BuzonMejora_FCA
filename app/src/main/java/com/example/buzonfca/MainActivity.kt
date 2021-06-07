@@ -59,4 +59,23 @@ class MainActivity : AppCompatActivity(){
         }
         return super.onKeyDown(keyCode, event)
     }
+
+    //metodo opcional
+    //  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    //    menuInflater.inflate(R.menu.menu, menu)
+    //  return true
+    //}
+
+    //override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    //   val id = item.itemId
+    // if (id == R.id.item1) {
+    //   val siguiente = Intent(this, Login::class.java)
+    // startActivity(siguiente)
+    //}
+    //if (id == R.id.item2) {
+    //  Toast.makeText(this, "Manual de usuario", Toast.LENGTH_SHORT).show()
+    //}
+    //return super.onOptionsItemSelected(item)
+    // }
+
     }

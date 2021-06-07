@@ -4,12 +4,11 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_folio_view.*
-import kotlinx.android.synthetic.main.activity_form1.*
-import kotlinx.android.synthetic.main.activity_login.*
 
 class FolioView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +23,26 @@ class FolioView : AppCompatActivity() {
         submit.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
+
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
+            clipboardManager.setPrimaryClip(clip)
+            Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
+
         }
 
 
+
+
+
+
+
+
+
     }
+
+
+
+
 }

@@ -33,7 +33,6 @@
             android:gravity="top"
             android:hint="Ingresa tu queja o sugerencia"
             android:inputType="textMultiLine"
-
             android:paddingLeft="7dp"
             android:paddingTop="10dp"
             android:scrollbarStyle="insideOverlay"
