@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.Toast
@@ -76,6 +77,15 @@ class DataView : AppCompatActivity(){
                             val intent = Intent(this@DataView, SelectedQS::class.java)
                             intent.putExtra("folio",folio)
                             startActivity(intent)
+                        }
+
+                        override fun onItemClick(
+                            parent: AdapterView<*>,
+                            view: View,
+                            position: Int,
+                            id: Long
+                        ) {
+                            TODO("Not yet implemented")
                         }
                     })
                 }
