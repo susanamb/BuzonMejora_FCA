@@ -50,7 +50,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     private fun getUserData(path : String, value : String) {
-        
+
         dbref = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
         dbref.addValueEventListener(object : ValueEventListener {
 

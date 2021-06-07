@@ -23,11 +23,13 @@
         <activity android:name=".Form1"
             android:screenOrientation="portrait"/>
         <activity android:name=".FolioView"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ActivityMenu1"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             />
         <activity

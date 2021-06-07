@@ -2,6 +2,7 @@ package com.example.buzonfca
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,5 +53,10 @@ class MainActivity : AppCompatActivity(){
 
 
     }
-
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            super.finish()
+        }
+        return super.onKeyDown(keyCode, event)
+    }
     }
