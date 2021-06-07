@@ -29,8 +29,6 @@ class Login : AppCompatActivity() {
 
         //BOTON PARA ENTRAR A SEGUIMIENTO
         entrar.setOnClickListener {
-            val intent = Intent(this, MenuAdmin::class.java)
-            startActivity(intent)
             val progressbar = BtnLoadingProgressbar(it) // icono de carga en el boton entrar
 
             if(userInput.text!!.isNotEmpty()  && passInput.text!!.isNotEmpty() ){ //valida que los campos no esten vacios
