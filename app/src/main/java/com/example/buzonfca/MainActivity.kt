@@ -51,14 +51,13 @@ class MainActivity : AppCompatActivity(){
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
+    }
 
+    override fun onBackPressed() {
+        finish()
     }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            super.finish()
-        }
-        return super.onKeyDown(keyCode, event)
-    }
+
+
 
     //metodo opcional
     //  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
