@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var dbref : DatabaseReference
     private lateinit var dataRecyclerview : RecyclerView
     private lateinit var dataList : ArrayList<DBData>
-
+    var flag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,29 +86,25 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     var adapt = Adapter(dataList)
                     dataRecyclerview.adapter = adapt
 
+                     adapt.setOnClickListener(object : Adapter.onItemClickListener{
 
-
-                    adapt.setOnClickListener(object : Adapter.onItemClickListener{
-
-                        override fun onItemClick(position: Int) {
-                           val folio = (position+1).toString()
-
-                            val intent = Intent(this@FilteredData, SelectedQS::class.java)
-                            intent.putExtra("folio",folio)
-                            startActivity(intent)
-                        }
 
                         override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                           val a = parent[2]
-                           val b = parent.selectedItem.toString()
-
-
-                            val intent = Intent(this@FilteredData, SelectedQS::class.java)
-                            //intent.putExtra("folio",a)
-                            startActivity(intent)
                         }
 
-                    })
+                        override fun onItemClick(position: Int) {
+
+                            var pos = (position)
+                            var c = dataList[pos].Comentario
+
+                            val intent = Intent(this@FilteredData, SelectedQS::class.java)
+                            intent.putExtra("comentario",c)
+                            startActivity(intent)
+
+                            }
+
+                        })
+
                 }
             }
             override fun onCancelled(error: DatabaseError) {
