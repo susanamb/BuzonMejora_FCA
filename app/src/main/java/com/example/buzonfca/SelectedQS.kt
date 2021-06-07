@@ -53,11 +53,29 @@ class SelectedQS : AppCompatActivity() {
                     val asunto = it.child("Asunto").value
                     val coment = it.child("Comentario").value
                     val status = it.child("Status").value
+                    val saobservacion = it.child("SAComentario").value
 
+                    val pos = when (status) {
+                        "Resuelto" -> {
+                            1
+                        }
+                        "Falta informacion" -> {
+                            2
+                        }
+                        else -> {
+                            0
+                        }
+                    }
+
+                    spinner5.setSelection(pos)
                     textView5.text = folio
                     textView8.text = categoria.toString()
                     textView13.text = asunto.toString()
                     textView16.text = coment.toString()
+                    if(saobservacion != null){
+                        otros.setText(saobservacion.toString())
+                    }
+
                     if(status == "Pendiente, sin leer") {
                         myRef.child("$folio/Status").setValue("Pendiente, leído")
 

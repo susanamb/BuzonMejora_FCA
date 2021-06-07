@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.buzonfca"
-
-    >
+    package="com.example.buzonfca">
 
     <application
         android:allowBackup="true"
@@ -13,20 +11,24 @@
         android:theme="@style/Theme.Prototipo">
         <activity android:name=".DataUpdatedView"></activity>
         <activity android:name=".FilteredData" />
-        <activity android:name=".MenuAdmin" />
-        <activity android:name=".SelectedQS" />
-        <activity android:name=".DataView" />
-        <activity android:name=".Login" />
-        <activity android:name=".Form1" />
-        <activity android:name=".FolioView"
-            android:launchMode="singleTask"
+        <activity android:name=".MenuAdmin"
+            android:screenOrientation="portrait"
             />
+        <activity android:name=".SelectedQS"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DataView"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Form1"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FolioView"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ActivityMenu1"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:launchMode="singleTask"
             />
         <activity
             android:name=".SplashPantalla"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,137 +7,129 @@
     android:layout_marginTop="1dp"
     tools:context=".MenuAdmin">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="1dp"
         tools:context=".MenuAdmin">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".MenuAdmin">
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Bienvenido"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/ColorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+        <Button
+            android:id="@+id/pendientesbtn"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginRight="82dp"
+            android:background="@drawable/boton_redondo"
+            android:onClick="onTap"
+            android:text="Ver Pendientes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#121111"
+            android:textSize="18sp"
+            app:backgroundTint="#fbc02d"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.522"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="OnClick" />
+
+        <Button
+            android:id="@+id/todobtn"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginRight="82dp"
+            android:background="@drawable/boton_redondo"
+            android:onClick="onTap"
+            android:text="Ver todo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#121111"
+            android:textSize="18sp"
+            app:backgroundTint="#fbc02d"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pendientesbtn"
+            tools:ignore="OnClick" />
 
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:gravity="center"
-                android:text="¡Bienvenido!"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/ColorPrimary"
-                android:textSize="30sp"
-                android:textStyle="bold"
+        <Button
+            android:id="@+id/logoutbtn"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginLeft="82dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="82dp"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            android:layout_marginRight="82dp"
+            android:layout_marginBottom="122dp"
+            android:background="@drawable/boton_redondo"
+            android:onClick="onTap"
+            android:text="Cerrar sesión"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#121111"
+            android:textSize="18sp"
+            app:backgroundTint="#fbc02d"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/todobtn"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="OnClick" />
 
-            <Button
-                android:id="@+id/pendientesbtn"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:layout_marginStart="82dp"
-                android:layout_marginLeft="82dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="82dp"
-                android:layout_marginRight="82dp"
-                android:background="@drawable/boton_redondo"
-                android:onClick="onTap"
-                android:text="Ver Pendientes"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#121111"
-                android:textSize="18sp"
-                app:backgroundTint="#fbc02d"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.522"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:ignore="OnClick" />
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="67dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/boton_redondo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.976"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_help" />
 
-            <Button
-                android:id="@+id/todobtn"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:layout_marginStart="82dp"
-                android:layout_marginLeft="82dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="82dp"
-                android:layout_marginRight="82dp"
-                android:background="@drawable/boton_redondo"
-                android:onClick="onTap"
-                android:text="Ver todo"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#121111"
-                android:textSize="18sp"
-                app:backgroundTint="#fbc02d"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.526"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pendientesbtn"
-                tools:ignore="OnClick" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="246dp"
+            android:layout_height="91dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/fca" />
 
 
-            <Button
-                android:id="@+id/logoutbtn"
-                android:layout_width="match_parent"
-                android:layout_height="51dp"
-                android:layout_marginStart="82dp"
-                android:layout_marginLeft="82dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="82dp"
-
-                android:layout_marginRight="82dp"
-                android:layout_marginBottom="44dp"
-                android:background="@drawable/boton_redondo"
-                android:onClick="onTap"
-                android:text="Cerrar sesión"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#121111"
-                android:textSize="18sp"
-                app:backgroundTint="#fbc02d"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/todobtn"
-                tools:ignore="OnClick" />
-
-
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="246dp"
-                android:layout_height="91dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/fca" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="67dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/boton_redondo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_help" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
