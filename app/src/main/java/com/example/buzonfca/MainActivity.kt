@@ -53,10 +53,7 @@ class MainActivity : AppCompatActivity(){
 
 
     }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            super.finish()
+        override fun onBackPressed() {
+            finish()
         }
-        return super.onKeyDown(keyCode, event)
-    }
     }
