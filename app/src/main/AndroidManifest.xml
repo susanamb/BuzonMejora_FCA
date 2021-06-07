@@ -24,7 +24,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".FolioView"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+
+            />
         <activity
             android:name=".ActivityMenu1"
             android:parentActivityName=".MainActivity" />

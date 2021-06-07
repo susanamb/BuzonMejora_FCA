@@ -51,9 +51,11 @@ class MainActivity : AppCompatActivity(){
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-
     }
-        override fun onBackPressed() {
-            finish()
-        }
+
+    override fun onBackPressed() {
+        finish()
+    }
+
+
     }
