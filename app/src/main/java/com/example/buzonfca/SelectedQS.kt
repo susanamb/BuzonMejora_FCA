@@ -3,13 +3,14 @@ package com.example.buzonfca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Spinner
 import android.widget.Toast
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_selected_q_s.*
+import java.util.*
 
 class SelectedQS : AppCompatActivity() {
 
@@ -18,12 +19,13 @@ class SelectedQS : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val db = FirebaseDatabase.getInstance()
         val myRef = db.getReference("Quejas y Sugerencias")
+        var folio : String
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selected_q_s)
 
         database = Firebase.database.reference
-        var folio = intent.getStringExtra("folio")
+        var com = intent.getStringExtra("comentario")
 
         val actionBar = supportActionBar
 
@@ -33,76 +35,79 @@ class SelectedQS : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
 
-            database = FirebaseDatabase.getInstance().getReference("Quejas y Sugerencias")
-        if (folio != null) {
-            when (folio.length) {
-                1 -> {
-                    folio = "000$folio"
-                }
-                2 -> {
-                    folio = "00$folio"
-                }
-                3 -> {
-                    folio= "0$folio"
-                }
-            }
+           database.child("Quejas y Sugerencias").orderByChild("Comentario").equalTo("$com").limitToFirst(1).addValueEventListener(object: ValueEventListener{
 
-            database.child(folio).get().addOnSuccessListener {
-                if (it.exists()) {
-                    val categoria = it.child("Categoria").value
-                    val asunto = it.child("Asunto").value
-                    val coment = it.child("Comentario").value
-                    val status = it.child("Status").value
-                    val saobservacion = it.child("SAComentario").value
+               override fun onDataChange(snapshot: DataSnapshot) {
+                   if(snapshot.exists()){
+                       val qs = snapshot.value.toString()
+                       folio = qs.take(5).takeLast(4)
 
-                    val pos = when (status) {
-                        "Resuelto" -> {
-                            1
-                        }
-                        "Falta informacion" -> {
-                            2
-                        }
-                        else -> {
-                            0
-                        }
-                    }
 
-                    spinner5.setSelection(pos)
-                    textView5.text = folio
-                    textView8.text = categoria.toString()
-                    textView13.text = asunto.toString()
-                    textView16.text = coment.toString()
-                    if(saobservacion != null){
-                        otros.setText(saobservacion.toString())
-                    }
+                       database.child("Quejas y Sugerencias").child("$folio").get().addOnSuccessListener {
+                           if (it.exists()) {
+                               val categoria = it.child("Categoria").value
+                               val asunto = it.child("Asunto").value
+                               val coment = it.child("Comentario").value
+                               val status = it.child("Status").value
+                               val saobservacion = it.child("SAComentario").value
 
-                    if(status == "Pendiente, sin leer") {
-                        myRef.child("$folio/Status").setValue("Pendiente, leído")
+                               val pos = when (status) {
+                                   "Resuelto" -> {
+                                       1
+                                   }
+                                   "Falta informacion" -> {
+                                       2
+                                   }
+                                   else -> {
+                                       0
+                                   }
+                               }
 
-                    }
-                    Toast.makeText(this, "Consulta exitosa ", Toast.LENGTH_SHORT).show()
+                               spinner5.setSelection(pos)
+                               textView5.text = folio
+                               textView8.text = categoria.toString()
+                               textView13.text = asunto.toString()
+                               textView16.text = coment.toString()
+                               if(saobservacion != null){
+                                   otros.setText(saobservacion.toString())
+                               }
 
-                }else{
-                    Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+                               if(status == "Pendiente, sin leer") {
+                                   myRef.child("$folio/Status").setValue("Pendiente, leído")
 
-        update.setOnClickListener {
-            var seg: Spinner = findViewById(R.id.spinner5)
-            var seguimiento = seg.selectedItem.toString()
+                               }
+                               //Toast.makeText(this, "Consulta exitosa ", Toast.LENGTH_SHORT).show()
 
-            if(otros.text.isNotEmpty()){
-                var sa = otros.text.toString()
-                myRef.child("$folio/SAComentario").setValue(sa)
-            }else{
-                Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
-            }
-            myRef.child("$folio/Status").setValue(seguimiento)
+                           }else{
 
-            val intent = Intent(this, DataUpdatedView::class.java)
-            startActivity(intent)
-        }
+                               //Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
+                           }
+                       }
+
+                       update.setOnClickListener {
+                           var seg: Spinner = findViewById(R.id.spinner5)
+                           var seguimiento = seg.selectedItem.toString()
+
+                           if(otros.text.isNotEmpty()){
+                               var sa = otros.text.toString()
+                               myRef.child("$folio/SAComentario").setValue(sa)
+                           }else{
+                               //Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
+                           }
+                           myRef.child("$folio/Status").setValue(seguimiento)
+
+                           val intent = Intent(this@SelectedQS, DataUpdatedView::class.java)
+                           startActivity(intent)
+                       }
+                   }
+               }
+               override fun onCancelled(error: DatabaseError) {
+                   TODO("Not yet implemented")
+               }
+           } )
+
+
+
     }
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this, MenuAdmin::class.java)

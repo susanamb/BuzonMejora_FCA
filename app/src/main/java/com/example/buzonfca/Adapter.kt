@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(private val dataList : ArrayList<DBData>) : RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
-    private lateinit var mListener : onItemClickListener 
+    private lateinit var mListener : onItemClickListener
 
     interface onItemClickListener{
 
