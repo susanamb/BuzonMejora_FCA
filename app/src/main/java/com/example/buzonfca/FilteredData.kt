@@ -123,6 +123,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         if (parent != null) {
 
             var ver = parent.selectedItemPosition //posicion de la opcion seleccionada
+            var pos = parent.selectedItem.toString()
 
             if (ver == 1 || ver == 2) { // si queja o sugerencia, quiere decir que es una categoria
                 var ver = parent.selectedItem.toString() //recoge el valor si es queja o sugerencia
@@ -140,7 +141,8 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 dataList.clear() //si hay datos los borra para guardar los nuevos
                 getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
             }
-
+            Log.d("Hello","tu posicion -> $ver")
+            Log.d("Hello", "U selected -> $pos")
 
         }
 

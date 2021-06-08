@@ -20,7 +20,6 @@ class SelectedQS : AppCompatActivity() {
         val db = FirebaseDatabase.getInstance()
         val myRef = db.getReference("Quejas y Sugerencias")
         var folio : String
-        var flag = true
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selected_q_s)
