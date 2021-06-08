@@ -29,9 +29,7 @@ class Login : AppCompatActivity() {
 
         //BOTON PARA ENTRAR A SEGUIMIENTO
         entrar.setOnClickListener {
-            val intent = Intent(this, MenuAdmin::class.java)
-            startActivity(intent)
-            /*val progressbar = BtnLoadingProgressbar(it) // icono de carga en el boton entrar
+            val progressbar = BtnLoadingProgressbar(it) // icono de carga en el boton entrar
 
             if(userInput.text!!.isNotEmpty()  && passInput.text!!.isNotEmpty() ){ //valida que los campos no esten vacios
                 progressbar.setLoading() //muestra icono de carga
@@ -64,7 +62,7 @@ class Login : AppCompatActivity() {
             }
             else{ //si el usuario no llena los campos necesarios
                 Toast.makeText(this,"Llena los campos", Toast.LENGTH_SHORT).show()
-            }*/
+            }
 
         }
     }

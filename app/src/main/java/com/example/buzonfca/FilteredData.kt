@@ -42,6 +42,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         cat.onItemSelectedListener = this
 
 
+
     }
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this, MenuAdmin::class.java)
