@@ -41,6 +41,8 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var cat: Spinner = findViewById(R.id.mostrar)
         cat.onItemSelectedListener = this
 
+        var orden: Spinner = findViewById(R.id.ordenar)
+        orden.onItemSelectedListener = this
 
 
     }
@@ -87,6 +89,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     var adapt = Adapter(dataList)
                     dataRecyclerview.adapter = adapt
 
+
                      adapt.setOnClickListener(object : Adapter.onItemClickListener{
 
 
@@ -123,27 +126,30 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if (parent != null) {
 
-            var ver = parent.selectedItemPosition //posicion de la opcion seleccionada
-            var pos = parent.selectedItem.toString()
+            //var ver = parent.selectedItemPosition //posicion de la opcion seleccionada
+            var ver = parent.selectedItem.toString()
 
-            if (ver == 1 || ver == 2) { // si queja o sugerencia, quiere decir que es una categoria
+            if (ver == "Quejas" || ver == "Sugerencias") { // si queja o sugerencia, quiere decir que es una categoria
                 var ver = parent.selectedItem.toString() //recoge el valor si es queja o sugerencia
                 ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
                 dataList.clear() // elimina los elementos ya en el arreglo
                 getUserData(path = "Categoria", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
-            } else if (ver == 3 || ver == 4) { // si resuelto o pendiente, quiere decir que es status
+            } else if (ver == "Pendientes" || ver == "Resueltos") { // si resuelto o pendiente, quiere decir que es status
                 var ver = parent.selectedItem.toString() //recoge el valor si es resuelto o pendiente
                 ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
                 dataList.clear() // elimina los elementos ya en el arreglo
                 getUserData(path = "Status", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
-            }else{
+            }else if(ver == "Antiguos"){
+                getUserData(path = "old", value = "") //manda a la funcion para mostrar los registros
+            }
+            else{
                 dataList.clear() //si hay datos los borra para guardar los nuevos
                 getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
             }
             Log.d("Hello","tu posicion -> $ver")
-            Log.d("Hello", "U selected -> $pos")
+
 
         }
 

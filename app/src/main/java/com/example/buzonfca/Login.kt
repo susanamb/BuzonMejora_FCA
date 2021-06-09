@@ -29,6 +29,8 @@ class Login : AppCompatActivity() {
 
         //BOTON PARA ENTRAR A SEGUIMIENTO
         entrar.setOnClickListener {
+            //val intent = Intent(this, MenuAdmin::class.java)
+            //startActivity(intent)
             val progressbar = BtnLoadingProgressbar(it) // icono de carga en el boton entrar
 
             if(userInput.text!!.isNotEmpty()  && passInput.text!!.isNotEmpty() ){ //valida que los campos no esten vacios
@@ -64,6 +66,15 @@ class Login : AppCompatActivity() {
                 Toast.makeText(this,"Llena los campos", Toast.LENGTH_SHORT).show()
             }
 
+        }
+
+        resetpass.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Holis")
+            builder.setMessage("Quieres resetear tu clave?")
+            builder.setPositiveButton("Aceptar", null)
+            val dialog: AlertDialog = builder.create()
+            dialog.show() //fin muestra error
         }
     }
     //REGRESAR A LA PANTALLA ANTERIOR
