@@ -28,8 +28,8 @@ class FolioView : AppCompatActivity() {
             clipboardManager.setPrimaryClip(clip)
             Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
             //super.finishAndRemoveTask()
-            //val intent = Intent(this, MainActivity::class.java)
-            //startActivity(intent)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
         
 
