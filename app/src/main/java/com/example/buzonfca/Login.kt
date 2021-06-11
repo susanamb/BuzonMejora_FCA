@@ -1,20 +1,29 @@
 package com.example.buzonfca
 
+import android.app.Dialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.Window
+import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_form1.*
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_main.*
-
+import kotlinx.android.synthetic.main.resetpass_layout.*
+import kotlinx.android.synthetic.main.resetpass_layout.view.*
 
 
 class Login : AppCompatActivity() {
     val handler = Handler()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -29,9 +38,9 @@ class Login : AppCompatActivity() {
 
         //BOTON PARA ENTRAR A SEGUIMIENTO
         entrar.setOnClickListener {
-            //val intent = Intent(this, MenuAdmin::class.java)
-            //startActivity(intent)
-            val progressbar = BtnLoadingProgressbar(it) // icono de carga en el boton entrar
+            val intent = Intent(this, MenuAdmin::class.java)
+            startActivity(intent)
+            /*val progressbar = BtnLoadingProgressbar(it) // icono de carga en el boton entrar
 
             if(userInput.text!!.isNotEmpty()  && passInput.text!!.isNotEmpty() ){ //valida que los campos no esten vacios
                 progressbar.setLoading() //muestra icono de carga
@@ -64,17 +73,48 @@ class Login : AppCompatActivity() {
             }
             else{ //si el usuario no llena los campos necesarios
                 Toast.makeText(this,"Llena los campos", Toast.LENGTH_SHORT).show()
-            }
+            }*/
 
         }
 
         resetpass.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Holis")
-            builder.setMessage("Quieres resetear tu clave?")
-            builder.setPositiveButton("Aceptar", null)
-            val dialog: AlertDialog = builder.create()
-            dialog.show() //fin muestra error
+
+            val view = View.inflate(this@Login,R.layout.resetpass_layout,null)
+            val mBuilder = AlertDialog.Builder(this@Login).setView(view)
+
+            val dialog = mBuilder.create()
+            dialog.show()
+
+            view.send_btn.setOnClickListener {
+                dialog.dismiss()
+                val correo = view.correoReset.text!!.toString()
+
+                FirebaseAuth.getInstance().sendPasswordResetEmail(correo)
+                    .addOnCompleteListener{it ->
+                        if(it.isSuccessful){
+                            val builder = AlertDialog.Builder(this)
+                            builder.setTitle("Listo")
+                            builder.setMessage("Revisa tu bandeja de entrada")
+                            builder.setPositiveButton("Aceptar", null)
+                            val dialog: AlertDialog = builder.create()
+                            dialog.show()
+
+                        }else{
+                            var err = it.exception!!.message.toString()
+                            val builder = AlertDialog.Builder(this)
+                            builder.setTitle("Error")
+                            builder.setMessage("$err, intentalo de nuevo")
+                            builder.setPositiveButton("Aceptar", null)
+
+
+                            val dialog: AlertDialog = builder.create()
+                            dialog.show()
+                            Log.d("Hello","Muy mal $err ")
+                        }
+                    }
+            }
+
+
         }
     }
     //REGRESAR A LA PANTALLA ANTERIOR
@@ -82,6 +122,7 @@ class Login : AppCompatActivity() {
         onBackPressed()
         return true
     }
+
 
     //FUNCION PARA EL ICONO DE CARGA EN CASO DE ERROR
     private fun startError(progressbar: BtnLoadingProgressbar) {

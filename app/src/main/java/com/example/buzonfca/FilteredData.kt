@@ -148,7 +148,6 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 dataList.clear() //si hay datos los borra para guardar los nuevos
                 getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
             }
-            Log.d("Hello","tu posicion -> $ver")
 
 
         }

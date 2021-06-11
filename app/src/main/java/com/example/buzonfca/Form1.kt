@@ -1,10 +1,11 @@
-package com.example.buzonfca
+ package com.example.buzonfca
 
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.AdapterView
@@ -12,22 +13,26 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_form1.*
+import kotlinx.android.synthetic.main.folio_layout.view.*
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
 
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
         var con = " "
+
         var i = true
 
         super.onCreate(savedInstanceState)
@@ -101,10 +106,21 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                                 i = false
                             }
+
+                            /*
+
+                            val view = View.inflate(this@Form1,R.layout.folio_layout,null)
+                            val mBuilder = AlertDialog.Builder(this@Form1).setView(view)
+
+                            val dialog = mBuilder.create()
+                            view.foliov.text = "$conn"
+                            dialog.show()
+                            view.close.setOnClickListener {
+                                dialog.dismiss()
+                            }*/
+
                             //ENVIA AL USUARIO A LA PANTALLA DONDE MUESTRA EL FOLIO OBTENIDO
-                            val intent = Intent(this@Form1, FolioView::class.java)
-                            intent.putExtra("Folio", " $con")//envia folio generado a la otra vista
-                            startActivity(intent)
+
                         }
 
                         override fun onCancelled(databaseError: DatabaseError) {
@@ -112,6 +128,14 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         }
 
                     })
+                    //Log.d("Hello","Tu folio, al final -> $folio & $con")
+
+
+
+                    val intent = Intent(this@Form1, FolioView::class.java)
+                    //intent.putExtra("Folio", " ")//envia folio generado a la otra vista
+                    startActivity(intent)
+
                 }else{ //si se introdujo correo pero no es valido
                     Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show()
                 }
@@ -129,6 +153,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     }
+
 
     //BACK BUTTON
     override fun onSupportNavigateUp(): Boolean {
