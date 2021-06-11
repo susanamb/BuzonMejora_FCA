@@ -54,7 +54,7 @@ class MenuAdmin : AppCompatActivity() {
         val id = item.itemId
         if (id == R.id.item1) {
             FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, RegistroUsuario::class.java)
             startActivity(intent)
         }
         if (id == R.id.item2) {

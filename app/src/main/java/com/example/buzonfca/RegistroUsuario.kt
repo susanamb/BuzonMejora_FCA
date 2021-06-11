@@ -3,6 +3,7 @@ package com.example.buzonfca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -30,10 +31,12 @@ class RegistroUsuario : AppCompatActivity() {
 
         save.setOnClickListener {
             if(userInput.text!!.isNotEmpty()  && passInput.text!!.isNotEmpty() && confirmpassInput.text!!.isNotEmpty()) {//validar que todos los campos esten llenos
-                val mail = correo.text.toString()
-                if(validarEmail("$mail")) {//valida que el correo introducido sea de uabc
-                   if (passInput.text!!.isNotEmpty() == confirmpassInput.text!!.isNotEmpty()) {//validar que haya introducido la misma contrasena en ambos inputs
-
+                val mail = userInput.text.toString()
+                val uabcmail = validarEmail("$mail")
+                if(uabcmail) {//valida que el correo introducido sea de uabc
+                    Log.d("Hello","Correo uabc-> $mail")
+                   if (passInput.text.toString() == confirmpassInput.text.toString()) {//validar que haya introducido la misma contrasena en ambos inputs
+                        Log.d("Hello","las contrasenaas son iguales")
                        FirebaseAuth.getInstance().createUserWithEmailAndPassword(userInput.text.toString(),passInput.text.toString())//crea el usuario en Firebase
                            .addOnCompleteListener{
                                if(it.isSuccessful){
@@ -41,7 +44,7 @@ class RegistroUsuario : AppCompatActivity() {
                                    val mensaje = "Usuario registrado exitosamente"
                                    showAlert(mensaje,res)
 
-                                   val intent = Intent(this, MenuAdmin::class.java)
+                                   val intent = Intent(this, Login::class.java)
                                    startActivity(intent)
 
                                }else{
@@ -52,6 +55,7 @@ class RegistroUsuario : AppCompatActivity() {
                            }
 
                    } else {
+                       Log.d("Hello","las contrasenaas NO son iguales")
                        Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
                    }
                }else{
