@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(){
     override fun onBackPressed() {
 
             val alerta = AlertDialog.Builder(this@MainActivity)
-            alerta.setMessage("Desea salir de la aplicacion?")
+            alerta.setMessage("¿Desea salir de la aplicación?")
                     .setCancelable(false)
                     .setPositiveButton("Si") { dialog, which -> finish() } //.setPositiveButton("Aceotar y copiar", new DialogInterface.OnClickListener() {
                     //  @Override
