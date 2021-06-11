@@ -36,6 +36,7 @@ class FolioView : AppCompatActivity() {
                         cont += 1
                     }
                 }
+               // cont += 1
                 var folio = cont.toString()
                 when (folio.length) { //anteponer los 0 para el folio
                     1 -> {
