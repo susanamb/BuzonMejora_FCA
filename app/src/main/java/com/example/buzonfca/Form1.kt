@@ -192,5 +192,34 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
+
+
+//    private fun mostrarDialogoPersonalizado() {
+//        val builder = AlertDialog.Builder(this@Form1)
+//        val inflater = layoutInflater
+//        val view = inflater.inflate(R.layout.dialog_personalizado, null)
+//        builder.setView(view)
+//        val dialog = builder.create()
+//        dialog.show()
+//
+//
+//        val txt = view.findViewById<TextView>(R.id.text_dialog)
+//        txt.text = "Tu comentario se envio correctamente"
+//
+//        val txt2 = view.findViewById<TextView>(R.id.text_dialog2)
+//        txt2.text = "Folio:"
+//
+//
+//        val txt3 = view.findViewById<TextView>(R.id.text_dialog3)
+//        val folio = intent.getStringExtra("Folio")
+//        txt3.text = folio
+//
+//        val btnReintentar = view.findViewById<Button>(R.id.button4)
+//        btnReintentar.setOnClickListener {
+//           // Toast.makeText(applicationContext, "Conectando...", Toast.LENGTH_SHORT)
+//            dialog.dismiss()
+//        }
+//    }
+
 }
 

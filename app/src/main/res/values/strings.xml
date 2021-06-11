@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Buzon de Mejora</string>
+    <string name="Spippner2">Asunto</string>
+    <string name="extended_fab_label">S.A</string>
 
     //dropdown de las categorias
     <string-array name="cat">
