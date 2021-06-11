@@ -1,16 +1,17 @@
 package com.example.buzonfca
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Patterns
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
@@ -18,8 +19,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_form1.*
+import kotlinx.android.synthetic.main.dialog_view.view.*
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
+
 
 
 class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -29,6 +32,9 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val myRef = database.getReference("Quejas y Sugerencias")
         var con = " "
         var i = true
+
+
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
@@ -102,9 +108,12 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                 i = false
                             }
                             //ENVIA AL USUARIO A LA PANTALLA DONDE MUESTRA EL FOLIO OBTENIDO
+
                             val intent = Intent(this@Form1, FolioView::class.java)
                             intent.putExtra("Folio", " $con")//envia folio generado a la otra vista
                             startActivity(intent)
+                           // mostrarDialogoPersonalizado()
+
                         }
 
                         override fun onCancelled(databaseError: DatabaseError) {
@@ -119,6 +128,8 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }else{//si el usuario no introdujo ningun comentario
                 Toast.makeText(this, "Escribe tu comentario", Toast.LENGTH_SHORT).show()
             }
+
+
         }
 
         val cat: Spinner = findViewById(R.id.spinner)
@@ -129,6 +140,11 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     }
+
+
+
+
+
 
     //BACK BUTTON
     override fun onSupportNavigateUp(): Boolean {
@@ -166,6 +182,33 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             false
         }
     }
+
+//    private fun mostrarDialogoPersonalizado() {
+//        val builder = AlertDialog.Builder(this@Form1)
+//        val inflater = layoutInflater
+//        val view = inflater.inflate(R.layout.dialog_personalizado, null)
+//        builder.setView(view)
+//        val dialog = builder.create()
+//        dialog.show()
+//
+//
+//        val txt = view.findViewById<TextView>(R.id.text_dialog)
+//        txt.text = "Tu comentario se envio correctamente"
+//
+//        val txt2 = view.findViewById<TextView>(R.id.text_dialog2)
+//        txt2.text = "Folio:"
+//
+//
+//        val txt3 = view.findViewById<TextView>(R.id.text_dialog3)
+//        val folio = intent.getStringExtra("Folio")
+//        txt3.text = folio
+//
+//        val btnReintentar = view.findViewById<Button>(R.id.button4)
+//        btnReintentar.setOnClickListener {
+//           // Toast.makeText(applicationContext, "Conectando...", Toast.LENGTH_SHORT)
+//            dialog.dismiss()
+//        }
+//    }
 
 }
 

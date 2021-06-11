@@ -13,5 +13,9 @@
     <color name="ColorAccent">#FF03DAC5</color>
     <color name="colorSplash">#dd971a</color>
     <color name="colorSplash2">#D88D06</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGreen">#4BB543</color>
+
 
 </resources>

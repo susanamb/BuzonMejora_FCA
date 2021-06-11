@@ -1,8 +1,9 @@
 package com.example.buzonfca
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,8 +56,24 @@ class MainActivity : AppCompatActivity(){
 
 
     override fun onBackPressed() {
-        finish()
-    }
+
+            val alerta = AlertDialog.Builder(this@MainActivity)
+            alerta.setMessage("Desea salir de la aplicacion?")
+                    .setCancelable(false)
+                    .setPositiveButton("Si") { dialog, which -> finish() } //.setPositiveButton("Aceotar y copiar", new DialogInterface.OnClickListener() {
+                    //  @Override
+                    //public void onClick(DialogInterface dialog, int which) {
+                    //
+                    //finish();
+                    //}
+                    //});
+                    .setNegativeButton("No") { dialog, which -> dialog.cancel() }
+            val titulo = alerta.create()
+            titulo.setTitle("Salida")
+            titulo.show()
 
 
-    }
+}
+
+
+}
