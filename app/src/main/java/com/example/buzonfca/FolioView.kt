@@ -63,10 +63,10 @@ class FolioView : AppCompatActivity() {
 
         //boton de aceptar regresa a la pantalla de inicio
         submit.setOnClickListener {
-            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
-            clipboardManager.setPrimaryClip(clip)
-            Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
+//            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//            val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
+//            clipboardManager.setPrimaryClip(clip)
+//            Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
 
 
 
