@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -62,6 +63,13 @@ class FolioView : AppCompatActivity() {
 
         //boton de aceptar regresa a la pantalla de inicio
         submit.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
+            clipboardManager.setPrimaryClip(clip)
+            Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
+
+
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
