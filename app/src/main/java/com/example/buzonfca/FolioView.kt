@@ -71,6 +71,7 @@ class FolioView : AppCompatActivity() {
 //            val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
 //            clipboardManager.setPrimaryClip(clip)
 //            Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
