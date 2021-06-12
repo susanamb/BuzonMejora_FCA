@@ -1,13 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Prototipo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Prototipo" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#016D3B</item>
         <item name="colorPrimaryDark">#0B4A2B</item>
         <item name="colorAccent">@color/ColorPrimaryDark</item>
     </style>
 
-    <style name="Theme.Buzon2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Buzon2" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">#dd971a</item>
         <item name="colorPrimaryDark">#0B4A2B</item>
         <item name="colorAccent">@color/purple_700</item>
