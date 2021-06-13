@@ -48,7 +48,7 @@ class MenuAdmin : AppCompatActivity() {
 
     //metodo cerrar sesion y manual
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu2, menu)
+        menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
@@ -58,9 +58,9 @@ class MenuAdmin : AppCompatActivity() {
             val intent = Intent(this, RegistroUsuario::class.java)
             startActivity(intent)
         }
-        if (id == R.id.item2) {
-            Toast.makeText(this, "Manual de usuario", Toast.LENGTH_SHORT).show()
-        }
+//        if (id == R.id.item2) {
+//            Toast.makeText(this, "Manual de usuario", Toast.LENGTH_SHORT).show()
+//        }
         return super.onOptionsItemSelected(item)
     }
 
