@@ -78,7 +78,7 @@ class MenuAdmin : AppCompatActivity() {
                 }
                 .setNegativeButton("No") { dialog, which -> dialog.cancel() }
         val titulo = alerta.create()
-        titulo.setTitle("Cerrar sesion")
+        titulo.setTitle("Cerrar sesión")
         titulo.show()
 
     }
