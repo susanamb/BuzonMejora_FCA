@@ -66,7 +66,7 @@ class MenuAdmin : AppCompatActivity() {
     override fun onBackPressed() {
 
         val alerta = AlertDialog.Builder(this@MenuAdmin)
-        alerta.setMessage("Desea cerrar sesion?")
+        alerta.setMessage("Desea cerrar sesión?")
                 .setCancelable(false)
                 .setPositiveButton("Si") { dialog, which ->
 
@@ -77,7 +77,7 @@ class MenuAdmin : AppCompatActivity() {
                 }
                 .setNegativeButton("No") { dialog, which -> dialog.cancel() }
         val titulo = alerta.create()
-        titulo.setTitle("Cerrar sesion")
+        titulo.setTitle("Cerrar sesión")
         titulo.show()
 
     }

@@ -68,10 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
         android:layout_marginLeft="91dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="92dp"
         android:layout_marginRight="92dp"
-        android:text="Iniciar sesion"
+        android:text="Iniciar sesión"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -87,41 +87,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="67dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/boton_redondo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetpass"
-        app:srcCompat="@android:drawable/ic_menu_help" />
+        app:layout_constraintTop_toBottomOf="@+id/resetpass" />
 
     <TextView
         android:id="@+id/resetpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="356dp"
-        android:layout_marginBottom="310dp"
+        android:layout_marginTop="15dp"
+        android:autoLink="web"
+        android:linksClickable="true"
         android:singleLine="false"
         android:text="¿Olvidaste tu contraseña?"
         android:textColor="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autoLink="web"
-        android:linksClickable="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var dbref : DatabaseReference
     private lateinit var dataRecyclerview : RecyclerView
     private lateinit var dataList : ArrayList<DBData>
-    var flag = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val actionBar = supportActionBar
         if(actionBar != null){
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
@@ -61,7 +61,11 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 if (snapshot.exists()){
+                    if(path != "order"){ //si ordena por recientes
 
+                        dataList.clear()
+
+                    } 
                     for (userSnapshot in snapshot.children){
                         val dato = userSnapshot.getValue(DBData::class.java)
 
@@ -82,10 +86,11 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                     dataList.add(dato)
 
                                 }
+
                         }
 
                     }
-
+                    Log.d("Hello","almost there")
                     var adapt = Adapter(dataList)
                     dataRecyclerview.adapter = adapt
 
@@ -132,23 +137,27 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             if (ver == "Quejas" || ver == "Sugerencias") { // si queja o sugerencia, quiere decir que es una categoria
                 var ver = parent.selectedItem.toString() //recoge el valor si es queja o sugerencia
                 ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
-                dataList.clear() // elimina los elementos ya en el arreglo
+                //dataList.clear() // elimina los elementos ya en el arreglo
                 getUserData(path = "Categoria", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
             } else if (ver == "Pendientes" || ver == "Resueltos") { // si resuelto o pendiente, quiere decir que es status
                 var ver = parent.selectedItem.toString() //recoge el valor si es resuelto o pendiente
                 ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
-                dataList.clear() // elimina los elementos ya en el arreglo
+                //dataList.clear() // elimina los elementos ya en el arreglo
                 getUserData(path = "Status", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
             }else if(ver == "Antiguos"){
-                getUserData(path = "old", value = "") //manda a la funcion para mostrar los registros
-            }
-            else{
-                dataList.clear() //si hay datos los borra para guardar los nuevos
-                getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
+
+                getUserData(path = "order", value = "") //manda a la funcion para mostrar los registros
+            }else if(ver == "Recientes"){
+
+                getUserData(path = "", value = "") //manda a la funcion para mostrar los registros
             }
 
+            else{
+                //dataList.clear() //si hay datos los borra para guardar los nuevos
+                getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
+            }
 
         }
 
