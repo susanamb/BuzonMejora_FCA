@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.resetpass_layout.*
@@ -25,13 +26,14 @@ class Login : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
         if(actionBar != null){
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }//FIN BOTON REGRESO

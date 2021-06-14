@@ -5,12 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
         var contador =0
@@ -58,7 +60,7 @@ class MainActivity : AppCompatActivity(){
     override fun onBackPressed() {
 
             val alerta = AlertDialog.Builder(this@MainActivity)
-            alerta.setMessage("Desea salir de la aplicacion?")
+            alerta.setMessage("¿Desea salir de la aplicación?")
                     .setCancelable(false)
                     .setPositiveButton("Si") { dialog, which -> finish() } //.setPositiveButton("Aceotar y copiar", new DialogInterface.OnClickListener() {
                     //  @Override

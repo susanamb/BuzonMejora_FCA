@@ -30,7 +30,7 @@ class ActivityMenu1 : AppCompatActivity() {
         val actionBar = supportActionBar
 
         if(actionBar != null){
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }//FIN BOTON DE REGRESO

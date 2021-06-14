@@ -30,7 +30,9 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
         var con = " "
@@ -51,7 +53,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
         if(actionBar != null){
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }

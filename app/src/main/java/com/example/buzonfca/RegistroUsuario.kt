@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_registro_usuario.*
 import kotlinx.android.synthetic.main.activity_registro_usuario.passInput
@@ -15,13 +16,14 @@ import java.util.regex.Pattern
 
 class RegistroUsuario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro_usuario)
 
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
         if(actionBar != null){
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }//FIN BOTON REGRESO

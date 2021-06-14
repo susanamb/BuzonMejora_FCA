@@ -4,8 +4,7 @@
 
     <item
         android:id="@+id/item1"
-        android:title="S.A" />
-    <item
-        android:id="@+id/item2"
-        android:title="Maual de usuario" />
+        android:title="Registrar usuario" />
+
+
 </menu>

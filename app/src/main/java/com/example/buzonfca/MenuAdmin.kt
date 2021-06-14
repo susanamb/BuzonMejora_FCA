@@ -8,11 +8,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_menu_admin.*
 
 class MenuAdmin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_admin)
 
@@ -46,27 +48,27 @@ class MenuAdmin : AppCompatActivity() {
 
     //metodo cerrar sesion y manual
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu2, menu)
+        menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == R.id.item1) {
-            FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, RegistroUsuario::class.java)
             startActivity(intent)
         }
-        if (id == R.id.item2) {
-            Toast.makeText(this, "Manual de usuario", Toast.LENGTH_SHORT).show()
-        }
+//        if (id == R.id.item2) {
+//            Toast.makeText(this, "Manual de usuario", Toast.LENGTH_SHORT).show()
+//        }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
 
         val alerta = AlertDialog.Builder(this@MenuAdmin)
-        alerta.setMessage("Desea cerrar sesión?")
+
+        alerta.setMessage("¿Desea cerrar sesión?")
                 .setCancelable(false)
                 .setPositiveButton("Si") { dialog, which ->
 
