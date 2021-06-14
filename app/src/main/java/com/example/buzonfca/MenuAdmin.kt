@@ -67,6 +67,7 @@ class MenuAdmin : AppCompatActivity() {
     override fun onBackPressed() {
 
         val alerta = AlertDialog.Builder(this@MenuAdmin)
+
         alerta.setMessage("¿Desea cerrar sesión?")
                 .setCancelable(false)
                 .setPositiveButton("Si") { dialog, which ->

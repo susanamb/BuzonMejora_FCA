@@ -30,7 +30,9 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-       AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
         var con = " "
@@ -46,7 +48,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //scroll del texto
         val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
-        desc.setMovementMethod(ScrollingMovementMethod());
+        desc.movementMethod = ScrollingMovementMethod();
 
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
