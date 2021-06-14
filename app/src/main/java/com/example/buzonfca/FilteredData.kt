@@ -65,7 +65,23 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                         dataList.clear()
 
-                    } 
+                    } else{ // si ordena por antiguos
+                        Log.d("Hello","Vamo a invertir la lista")
+                        var dataList2 = dataList.asReversed()
+                        //dataList.clear()
+                        //dataList.add(dataList2[0])
+                        Log.d("Hello","$dataList")
+                        /*
+                        for( i in dataList){
+                            Log.d("Hello","1 -> ${i.Comentario}")
+
+                        }*/
+                        for( i in dataList2){
+                            Log.d("Hello","1 -> ${i.Comentario}")
+                            dataList.add(i)
+                        }
+
+                    }
                     for (userSnapshot in snapshot.children){
                         val dato = userSnapshot.getValue(DBData::class.java)
 
