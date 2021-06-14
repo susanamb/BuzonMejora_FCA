@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Login"
-        >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="246dp"
@@ -90,25 +80,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
-            <include
-                android:id="@+id/entrar"
-                layout="@layout/btn_loading_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginBottom="32dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+    <include
+        android:id="@+id/entrar"
+        layout="@layout/btn_loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetpass" />
 
-
-            <TextView
+    <TextView
                 android:id="@+id/resetpass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,31 +103,9 @@
                 android:autoLink="web"
                 android:linksClickable="true"
                 android:singleLine="false"
-
                 android:text="¿Olvidaste tu contraseña?"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout6"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
-
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="66dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/boton_redondo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:srcCompat="@android:drawable/ic_menu_help" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

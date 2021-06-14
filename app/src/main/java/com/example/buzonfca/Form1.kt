@@ -51,7 +51,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //BOTON PARA REGRESAR
         val actionBar = supportActionBar
         if(actionBar != null){
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
