@@ -190,7 +190,7 @@
 
         <EditText
             android:id="@+id/otros"
-            android:layout_width="356dp"
+            android:layout_width="match_parent"
             android:layout_height="138dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"

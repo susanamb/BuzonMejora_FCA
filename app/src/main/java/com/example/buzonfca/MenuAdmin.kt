@@ -28,9 +28,20 @@ class MenuAdmin : AppCompatActivity() {
 
         //CIERRA SESION Y REGRESA A LA PANTALLA PRINCIPAL
         logoutbtn.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val alerta = AlertDialog.Builder(this@MenuAdmin)
+
+            alerta.setMessage("¿Desea cerrar sesión?")
+                    .setCancelable(false)
+                    .setPositiveButton("Si") { dialog, which ->
+                        FirebaseAuth.getInstance().signOut()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    .setNegativeButton("No") { dialog, which -> dialog.cancel() }
+            val titulo = alerta.create()
+            titulo.setTitle("Cerrar sesión")
+            titulo.show()
         }
     }
 
@@ -71,7 +82,6 @@ class MenuAdmin : AppCompatActivity() {
         alerta.setMessage("¿Desea cerrar sesión?")
                 .setCancelable(false)
                 .setPositiveButton("Si") { dialog, which ->
-
                         FirebaseAuth.getInstance().signOut()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
