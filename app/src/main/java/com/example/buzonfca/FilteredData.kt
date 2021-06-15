@@ -65,22 +65,6 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                         dataList.clear()
 
-                    } else{ // si ordena por antiguos
-                        Log.d("Hello","Vamo a invertir la lista")
-                        var dataList2 = dataList.asReversed()
-                        //dataList.clear()
-                        //dataList.add(dataList2[0])
-                        Log.d("Hello","$dataList")
-                        /*
-                        for( i in dataList){
-                            Log.d("Hello","1 -> ${i.Comentario}")
-
-                        }*/
-                        for( i in dataList2){
-                            Log.d("Hello","1 -> ${i.Comentario}")
-                            dataList.add(i)
-                        }
-
                     }
                     for (userSnapshot in snapshot.children){
                         val dato = userSnapshot.getValue(DBData::class.java)
@@ -106,7 +90,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         }
 
                     }
-                    Log.d("Hello","almost there")
+
                     var adapt = Adapter(dataList)
                     dataRecyclerview.adapter = adapt
 
@@ -153,13 +137,12 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             if (ver == "Quejas" || ver == "Sugerencias") { // si queja o sugerencia, quiere decir que es una categoria
                 var ver = parent.selectedItem.toString() //recoge el valor si es queja o sugerencia
                 ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
-                //dataList.clear() // elimina los elementos ya en el arreglo
                 getUserData(path = "Categoria", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
             } else if (ver == "Pendientes" || ver == "Resueltos") { // si resuelto o pendiente, quiere decir que es status
                 var ver = parent.selectedItem.toString() //recoge el valor si es resuelto o pendiente
                 ver = ver.dropLast(1) //al estar en plural las palabras le elimina la ultima s de la palabra para hacer la busqueda
-                //dataList.clear() // elimina los elementos ya en el arreglo
+
                 getUserData(path = "Status", value = ver) //manda a la funcion para buscar y guardar los datos requeridos
 
             }else if(ver == "Antiguos"){
@@ -171,7 +154,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
 
             else{
-                //dataList.clear() //si hay datos los borra para guardar los nuevos
+
                 getUserData(path = "", value = "") //manda a la funcion para mostrar todos los registros
             }
 

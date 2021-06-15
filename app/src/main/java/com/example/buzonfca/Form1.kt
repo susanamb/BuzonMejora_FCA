@@ -177,7 +177,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 otro.visibility = View.VISIBLE //muestra el campo para introducir el asunto
 
             }else{
-                otro.visibility = View.INVISIBLE // si elige uno predeterminado, oculta el campo
+                otro.visibility = View.GONE // si elige uno predeterminado, oculta el campo
 
             }
         }
