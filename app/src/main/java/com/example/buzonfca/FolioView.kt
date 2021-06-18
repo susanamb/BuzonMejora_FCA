@@ -22,17 +22,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 class FolioView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        val db = FirebaseDatabase.getInstance()
-        val myRef = db.getReference("Quejas y Sugerencias")
-        var cont =0
+        //val db = FirebaseDatabase.getInstance()
+        //val myRef = db.getReference("Quejas y Sugerencias")
+        //var cont =0
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_folio_view)
 
+        val folio = intent.getStringExtra("Folio")
+        textView11.text = folio.toString()
 
 
-
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        /*myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (issue in dataSnapshot.children) {
@@ -57,7 +58,7 @@ class FolioView : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
-
+*/
 
 
 

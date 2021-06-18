@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(){
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (issue in dataSnapshot.children) {
-                        contador = contador + 1
+                        contador += 1
                     }
                 }
                 textView17.text = contador.toString()
@@ -62,13 +62,7 @@ class MainActivity : AppCompatActivity(){
             val alerta = AlertDialog.Builder(this@MainActivity)
             alerta.setMessage("¿Desea salir de la aplicación?")
                     .setCancelable(false)
-                    .setPositiveButton("Si") { dialog, which -> finish() } //.setPositiveButton("Aceotar y copiar", new DialogInterface.OnClickListener() {
-                    //  @Override
-                    //public void onClick(DialogInterface dialog, int which) {
-                    //
-                    //finish();
-                    //}
-                    //});
+                    .setPositiveButton("Si") { dialog, which -> finish() }
                     .setNegativeButton("No") { dialog, which -> dialog.cancel() }
             val titulo = alerta.create()
             titulo.setTitle("Salida")

@@ -12,7 +12,7 @@
     ///dropdown de los asuntos predeterminados
     <string-array name="asuntos">
         <item>Administrativos</item>
-        <item>Maestros</item>
+        <item>Profesores</item>
         <item>Mantenimiento</item>
         <item>Plataformas</item>
         <item>Otro</item>

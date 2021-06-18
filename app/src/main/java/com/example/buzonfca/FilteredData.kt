@@ -18,6 +18,7 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var dbref : DatabaseReference
     private lateinit var dataRecyclerview : RecyclerView
     private lateinit var dataList : ArrayList<DBData>
+    private lateinit var dataListOrder : ArrayList<DBData>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,10 +63,9 @@ class FilteredData : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 if (snapshot.exists()){
                     if(path != "order"){ //si ordena por recientes
+                        dataList.clear()}
 
-                        dataList.clear()
 
-                    }
                     for (userSnapshot in snapshot.children){
                         val dato = userSnapshot.getValue(DBData::class.java)
 
