@@ -10,7 +10,7 @@
     <style name="Theme.Buzon2" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">#dd971a</item>
         <item name="colorPrimaryDark">#0B4A2B</item>
-        <item name="colorAccent">@color/purple_700</item>
+        <item name="colorAccent">@color/ColorPrimary</item>
     </style>
 
 </resources>

@@ -1,16 +1,14 @@
 package com.example.buzonfca
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.text.method.ScrollingMovementMethod
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_selected_q_s.*
-import java.util.*
 
 class SelectedQS : AppCompatActivity() {
 
@@ -20,6 +18,7 @@ class SelectedQS : AppCompatActivity() {
         val db = FirebaseDatabase.getInstance()
         val myRef = db.getReference("Quejas y Sugerencias")
         var folio : String
+        //textView16.setMovementMethod(ScrollingMovementMethod())
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selected_q_s)
@@ -30,7 +29,7 @@ class SelectedQS : AppCompatActivity() {
         val actionBar = supportActionBar
 
         if (actionBar != null) {
-            actionBar.title = "Menu"
+            actionBar.title = ""
 
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
