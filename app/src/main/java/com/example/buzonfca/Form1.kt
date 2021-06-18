@@ -16,10 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_form1.*
 import kotlinx.android.synthetic.main.folio_layout.view.*
 import java.text.SimpleDateFormat
@@ -38,13 +35,15 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var con = " "
 
         var i = true
+        var calendar: Calendar
+        var simpleDateFormat: SimpleDateFormat
+
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
 
         //variables para generar la fecha
-        var calendar: Calendar
-        var simpleDateFormat: SimpleDateFormat
 
         //scroll del texto
         val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
@@ -70,32 +69,50 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         @RequiresApi(Build.VERSION_CODES.N)
                         override fun onDataChange(dataSnapshot: DataSnapshot) {
                             if (i) {
-                                con = (dataSnapshot.childrenCount + 1).toString() //numero de registros en bd +1 para iniciar el conteo en 1
-                                when (con.length) { //anteponer los 0 para el folio
-                                    1 -> {
-                                        con = "000$con"
-                                    }
-                                    2 -> {
-                                        con = "00$con"
-                                    }
-                                    3 -> {
-                                        con = "0$con"
-                                    }
-                                }
+
 
                                 var cat: Spinner = findViewById(R.id.spinner)
                                 var cate = cat.selectedItem.toString() //recupera la categoria seleccionada; queja o sugerencia
+                                val ic = cate.take(1)
                                 var asu: Spinner = findViewById(R.id.spinner2)
                                 var asunt = if (asu.selectedItemPosition == (asu.count) - 1) { //valida si se selecciono un asinto especiffico u otro
                                     otro.text.toString() //se guarda el dato de otro en asunto
                                 } else {
                                     asu.selectedItem.toString() // se guarda el valor seleccionado del spinner de asunto
                                 }
+                                val ia = asunt.take(2)
                                 var mat = editTextTextMultiLine.text.toString() //valor del comentario qs
                                 calendar = Calendar.getInstance() //recupera la fecha actual
                                 simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")//formato de la fecha
                                 var fecha = simpleDateFormat.format(calendar.time).toString() //guarda la fecha como string
 
+                                con = (dataSnapshot.childrenCount + 1).toString() //numero de registros en bd +1 para iniciar el conteo en 1
+
+                                //FIN GUARDAR DATOS
+                                when {
+                                    con.toInt() < 10 -> {
+                                        con = "0${ic}0${ia}0$con"
+                                    }
+                                    con.toInt() in 10..99 -> {
+                                        con = "0${ic}0${ia}$con"
+                                    }
+                                    con.toInt() in 100..999 -> {
+                                        val mas = con.take(1)
+                                        con = con.takeLast(2)
+                                        con = "0${ic}$mas${ia}$con"
+                                    }
+                                    con.toInt() in 1000..9999 -> {
+                                        val mas = con.take(1)
+                                        val seg = con.take(2).takeLast(1)
+                                        con = con.drop(2)
+                                        con = "$mas${ic}$seg${ia}$con"
+                                    }
+
+
+                                    //GUARDA LOS DATOS EN FIREBASE
+                                }
+
+                                con=con.toUpperCase()
                                 //GUARDA LOS DATOS EN FIREBASE
                                 myRef.child("$con/Categoria").setValue(cate)
                                 myRef.child("$con/Asunto").setValue(asunt)
@@ -109,19 +126,22 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                 //FIN GUARDAR DATOS
 
                                 i = false
+
                             }
 
-                            /*
 
-                            val view = View.inflate(this@Form1,R.layout.folio_layout,null)
+
+                           val view = View.inflate(this@Form1,R.layout.folio_layout,null)
                             val mBuilder = AlertDialog.Builder(this@Form1).setView(view)
 
                             val dialog = mBuilder.create()
-                            view.foliov.text = "$conn"
+                            view.foliov.text = "$con"
                             dialog.show()
                             view.close.setOnClickListener {
                                 dialog.dismiss()
-                            }*/
+                                val intent = Intent(this@Form1, MainActivity::class.java)
+                                startActivity(intent)
+                            }
 
                             //ENVIA AL USUARIO A LA PANTALLA DONDE MUESTRA EL FOLIO OBTENIDO
 
@@ -131,14 +151,15 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                         }
 
+
                     })
-                    //Log.d("Hello","Tu folio, al final -> $folio & $con")
+                    /*Log.d("Hello","Tu folio, al final ->  & $con")
 
 
 
                     val intent = Intent(this@Form1, FolioView::class.java)
-                    //intent.putExtra("Folio", " ")//envia folio generado a la otra vista
-                    startActivity(intent)
+                    intent.putExtra("Folio", "$con")//envia folio generado a la otra vista
+                    startActivity(intent)*/
 
                 }else{ //si se introdujo correo pero no es valido
                     Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show()
@@ -195,6 +216,8 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             false
         }
     }
+
+
 
 
 

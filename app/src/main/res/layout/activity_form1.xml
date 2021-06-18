@@ -152,8 +152,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="76dp"
-            android:layout_marginEnd="96dp"
-            android:layout_marginRight="96dp"
+
             android:text="Asunto"
             app:layout_constraintEnd_toStartOf="@+id/spinner2"
             app:layout_constraintStart_toStartOf="parent"
