@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_form1.*
+import kotlinx.android.synthetic.main.folio_layout.*
 import kotlinx.android.synthetic.main.folio_layout.view.*
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
@@ -73,14 +74,14 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                                 var cat: Spinner = findViewById(R.id.spinner)
                                 var cate = cat.selectedItem.toString() //recupera la categoria seleccionada; queja o sugerencia
-                                val ic = cate.take(1)
+                                val ic = cate.take(1)//toma la primera letra de la categoria
                                 var asu: Spinner = findViewById(R.id.spinner2)
                                 var asunt = if (asu.selectedItemPosition == (asu.count) - 1) { //valida si se selecciono un asinto especiffico u otro
                                     otro.text.toString() //se guarda el dato de otro en asunto
                                 } else {
                                     asu.selectedItem.toString() // se guarda el valor seleccionado del spinner de asunto
                                 }
-                                val ia = asunt.take(2)
+                                val ia = asunt.take(2) //toma las primeras dos letras del asunto
                                 var mat = editTextTextMultiLine.text.toString() //valor del comentario qs
                                 calendar = Calendar.getInstance() //recupera la fecha actual
                                 simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")//formato de la fecha
@@ -89,7 +90,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                 con = (dataSnapshot.childrenCount + 1).toString() //numero de registros en bd +1 para iniciar el conteo en 1
 
                                 //FIN GUARDAR DATOS
-                                when {
+                                when { //genera el folio con el formato requerido, juntanto digitos con las iniciales de categoria y asunto
                                     con.toInt() < 10 -> {
                                         con = "0${ic}0${ia}0$con"
                                     }
@@ -111,8 +112,10 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                                     //GUARDA LOS DATOS EN FIREBASE
                                 }
+                                val letra = getRandomString()
+                                Log.d("Hello", " letra -> $letra")
 
-                                con=con.toUpperCase()
+                                con=("$letra$con").toUpperCase() //agrega letra aleatoria y lo convierte en mayusculas
                                 //GUARDA LOS DATOS EN FIREBASE
                                 myRef.child("$con/Categoria").setValue(cate)
                                 myRef.child("$con/Asunto").setValue(asunt)
@@ -127,20 +130,11 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                                 i = false
 
-                            }
+                                Log.d("Hello","Tu folio, al final -> $con")
+                               val intent = Intent(this@Form1, FolioView::class.java)
+                               intent.putExtra("Folio", "$con")//envia folio generado a la otra vista
+                               startActivity(intent)
 
-
-
-                           val view = View.inflate(this@Form1,R.layout.folio_layout,null)
-                            val mBuilder = AlertDialog.Builder(this@Form1).setView(view)
-
-                            val dialog = mBuilder.create()
-                            view.foliov.text = "$con"
-                            dialog.show()
-                            view.close.setOnClickListener {
-                                dialog.dismiss()
-                                val intent = Intent(this@Form1, MainActivity::class.java)
-                                startActivity(intent)
                             }
 
                             //ENVIA AL USUARIO A LA PANTALLA DONDE MUESTRA EL FOLIO OBTENIDO
@@ -153,13 +147,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
                     })
-                    /*Log.d("Hello","Tu folio, al final ->  & $con")
 
-
-
-                    val intent = Intent(this@Form1, FolioView::class.java)
-                    intent.putExtra("Folio", "$con")//envia folio generado a la otra vista
-                    startActivity(intent)*/
 
                 }else{ //si se introdujo correo pero no es valido
                     Toast.makeText(this, "Correo no valido", Toast.LENGTH_SHORT).show()
@@ -205,6 +193,13 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     }
 
+    fun getRandomString() : String {
+        val allowedChars = ('A'..'Z') + ('a'..'z')
+        return (1..1)
+            .map { allowedChars.random() }
+            .joinToString("")
+    }
+
     //FUNCION PARA VALIDAR CORREO
     private fun validarEmail(email: String): Boolean {
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
@@ -216,6 +211,7 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             false
         }
     }
+
 
 
 

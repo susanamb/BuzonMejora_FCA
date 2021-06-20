@@ -33,34 +33,6 @@ class FolioView : AppCompatActivity() {
         textView11.text = folio.toString()
 
 
-        /*myRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (issue in dataSnapshot.children) {
-                        cont += 1
-                    }
-                }
-               // cont += 1
-                var folio = cont.toString()
-                when (folio.length) { //anteponer los 0 para el folio
-                    1 -> {
-                        folio = " 000$folio"
-                    }
-                    2 -> {
-                        folio = " 00$folio"
-                    }
-                    3 -> {
-                        folio = " 0$folio"
-                    }
-                }
-                textView11.text = folio
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {}
-        })
-*/
-
-
 
         //boton de aceptar regresa a la pantalla de inicio
         submit.setOnClickListener {

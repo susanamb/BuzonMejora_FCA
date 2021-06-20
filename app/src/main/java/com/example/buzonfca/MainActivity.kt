@@ -33,11 +33,7 @@ class MainActivity : AppCompatActivity(){
             startActivity(intents)
         }
 
-        //BOTON PARA PANTALLA DE INICIO DE SESION DE S.A
-        log.setOnClickListener {
-            val intent2 = Intent(this, Login::class.java)
-            startActivity(intent2)
-        }
+        //BOTON PARA PANTALLA DE INICIO DE SESION DE S
 
         //CUENTA LA CANTIDAD DE CASOS CON EL ESTATUS RESUELTO
         val query: Query = myRef.orderByChild("Status").equalTo("Resuelto")

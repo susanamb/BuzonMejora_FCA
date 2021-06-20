@@ -53,10 +53,11 @@
         <TextView
             android:id="@+id/textView11"
 
-            android:layout_width="106dp"
-            android:layout_height="58dp"
+            android:layout_width="194dp"
+            android:layout_height="53dp"
             android:layout_marginTop="32dp"
-            android:text=" 00000"
+            android:gravity="center"
+            android:text=" 0000000"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -75,7 +76,7 @@
             android:layout_marginRight="82dp"
             android:background="@drawable/boton_redondo"
             android:onClick="onTap"
-            android:text="Continuar"
+            android:text="Aceptar"
             android:textColor="#171515"
             app:backgroundTint="#fbc02d"
             app:iconTint="#171515"

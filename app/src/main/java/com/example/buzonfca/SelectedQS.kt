@@ -39,8 +39,12 @@ class SelectedQS : AppCompatActivity() {
 
                override fun onDataChange(snapshot: DataSnapshot) {
                    if(snapshot.exists()){
-                       val qs = snapshot.value.toString()
-                       folio = qs.take(5).takeLast(4)
+                       var qs = snapshot.value.toString()
+                       Log.d("Hello","All data -> $qs")
+                       //qs = qs.dropWhile { !it.isLetterOrDigit() }.dropWhile { !it.isLetterOrDigit() }
+                       folio = qs.substringBefore('=').dropWhile { !it.isLetterOrDigit() }
+                       Log.d("Hello","Folio -> $folio")
+                       //folio = qs.take(5).takeLast(6)
 
 
                        database.child("Quejas y Sugerencias").child("$folio").get().addOnSuccessListener {
