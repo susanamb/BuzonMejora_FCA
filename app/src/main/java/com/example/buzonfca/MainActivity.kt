@@ -1,9 +1,13 @@
 package com.example.buzonfca
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.database.*
@@ -13,6 +17,7 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Quejas y Sugerencias")
         var contador =0
@@ -21,6 +26,7 @@ class MainActivity : AppCompatActivity(){
 
         //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
 
+        //internetConnection()
         //BOTON PARA PANTALLA DE REALIZAR UNA NUEVA QUEJA O SUGERENCIA
         iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)
@@ -50,6 +56,10 @@ class MainActivity : AppCompatActivity(){
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
+        help.setOnClickListener {
+            val inten = Intent(this, ManualUsuario::class.java)
+            startActivity(inten)
+        }
     }
 
 
@@ -66,6 +76,17 @@ class MainActivity : AppCompatActivity(){
 
 
 }
+/* private fun internetConnection(){
+     val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+     val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+     val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
 
+     if(isConnected){
+         Toast.makeText(this, "There's wifi", Toast.LENGTH_SHORT).show()
+     }else{
+         Toast.makeText(this, "There's NO wifi", Toast.LENGTH_SHORT).show()
+     }
+
+ }*/
 
 }

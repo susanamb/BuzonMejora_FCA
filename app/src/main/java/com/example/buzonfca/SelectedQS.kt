@@ -1,9 +1,11 @@
 package com.example.buzonfca
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -39,11 +41,8 @@ class SelectedQS : AppCompatActivity() {
                override fun onDataChange(snapshot: DataSnapshot) {
                    if(snapshot.exists()){
                        var qs = snapshot.value.toString()
-                       Log.d("Hello","All data -> $qs")
-                       //qs = qs.dropWhile { !it.isLetterOrDigit() }.dropWhile { !it.isLetterOrDigit() }
+
                        folio = qs.substringBefore('=').dropWhile { !it.isLetterOrDigit() }
-                       Log.d("Hello","Folio -> $folio")
-                       //folio = qs.take(5).takeLast(6)
 
 
                        database.child("Quejas y Sugerencias").child("$folio").get().addOnSuccessListener {
@@ -79,11 +78,15 @@ class SelectedQS : AppCompatActivity() {
                                    myRef.child("$folio/Status").setValue("Pendiente, leído")
 
                                }
-                               //Toast.makeText(this, "Consulta exitosa ", Toast.LENGTH_SHORT).show()
+
 
                            }else{
-
-                               //Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show()
+                               val builder = AlertDialog.Builder(this@SelectedQS)
+                               builder.setTitle("Error")
+                               builder.setMessage("Ocurrio un error, intentalo de nuevo")
+                               builder.setPositiveButton("Aceptar", null)
+                               val dialog: AlertDialog = builder.create()
+                               dialog.show() //fin muestra error
                            }
                        }
 

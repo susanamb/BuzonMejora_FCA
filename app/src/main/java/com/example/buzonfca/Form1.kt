@@ -130,7 +130,6 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                                 i = false
 
-                                Log.d("Hello","Tu folio, al final -> $con")
                                val intent = Intent(this@Form1, FolioView::class.java)
                                intent.putExtra("Folio", "$con")//envia folio generado a la otra vista
                                startActivity(intent)
