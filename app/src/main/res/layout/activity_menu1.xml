@@ -83,7 +83,7 @@
         android:gravity="top"
         android:hint="Folio"
         android:inputType="textPersonName"
-        android:maxLength="5"
+        android:maxLength="10"
         android:paddingLeft="7dp"
         android:paddingTop="10dp"
         android:scrollbarStyle="insideOverlay"

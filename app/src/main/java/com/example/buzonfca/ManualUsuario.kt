@@ -21,9 +21,8 @@ class ManualUsuario : AppCompatActivity() {
         }
 
         pdfViewer = findViewById(R.id.pdfView)
-        //pdfViewer.fromAsset("manual_de_usuario.pdf")
         pdfViewer.fromAsset("manual_de_usuario.pdf")
-            .pages(0, 2, 1, 3, 3, 3) // all pages are displayed by default
+
             .enableSwipe(true) // allows to block changing pages using swipe
             .swipeHorizontal(false)
             .enableDoubletap(true)

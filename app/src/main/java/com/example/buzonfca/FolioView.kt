@@ -15,16 +15,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 import kotlinx.android.synthetic.main.activity_folio_view.*
-import kotlinx.android.synthetic.main.activity_form1.*
-import kotlinx.android.synthetic.main.activity_login.*
+
 import kotlinx.android.synthetic.main.activity_main.*
 
 class FolioView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        //val db = FirebaseDatabase.getInstance()
-        //val myRef = db.getReference("Quejas y Sugerencias")
-        //var cont =0
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_folio_view)
@@ -40,10 +36,6 @@ class FolioView : AppCompatActivity() {
             val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
             clipboardManager.setPrimaryClip(clip)
             Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
-
-//            val clip = ClipData.newPlainText("EditText", textView11.getText().toString())
-//            clipboardManager.setPrimaryClip(clip)
-//            Toast.makeText(this, "Folio copiado", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
