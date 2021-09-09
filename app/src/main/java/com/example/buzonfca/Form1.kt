@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_form1.*
-import kotlinx.android.synthetic.main.folio_layout.*
-import kotlinx.android.synthetic.main.folio_layout.view.*
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
 
@@ -44,7 +42,6 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form1)
 
-        //variables para generar la fecha
 
         //scroll del texto
         val desc = findViewById<View>(R.id.editTextTextMultiLine) as TextView
@@ -102,18 +99,12 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                                         con = con.takeLast(2)
                                         con = "0${ic}$mas${ia}$con"
                                     }
-                                    con.toInt() in 1000..9999 -> {
-                                        val mas = con.take(1)
-                                        val seg = con.take(2).takeLast(1)
-                                        con = con.drop(2)
-                                        con = "$mas${ic}$seg${ia}$con"
-                                    }
 
 
                                     //GUARDA LOS DATOS EN FIREBASE
                                 }
                                 val letra = getRandomString()
-                                Log.d("Hello", " letra -> $letra")
+                                //Log.d("Hello", " letra -> $letra")
 
                                 con=("$letra$con").toUpperCase() //agrega letra aleatoria y lo convierte en mayusculas
                                 //GUARDA LOS DATOS EN FIREBASE
@@ -210,38 +201,5 @@ class Form1 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             false
         }
     }
-
-
-
-
-
-
-//    private fun mostrarDialogoPersonalizado() {
-//        val builder = AlertDialog.Builder(this@Form1)
-//        val inflater = layoutInflater
-//        val view = inflater.inflate(R.layout.dialog_personalizado, null)
-//        builder.setView(view)
-//        val dialog = builder.create()
-//        dialog.show()
-//
-//
-//        val txt = view.findViewById<TextView>(R.id.text_dialog)
-//        txt.text = "Tu comentario se envio correctamente"
-//
-//        val txt2 = view.findViewById<TextView>(R.id.text_dialog2)
-//        txt2.text = "Folio:"
-//
-//
-//        val txt3 = view.findViewById<TextView>(R.id.text_dialog3)
-//        val folio = intent.getStringExtra("Folio")
-//        txt3.text = folio
-//
-//        val btnReintentar = view.findViewById<Button>(R.id.button4)
-//        btnReintentar.setOnClickListener {
-//           // Toast.makeText(applicationContext, "Conectando...", Toast.LENGTH_SHORT)
-//            dialog.dismiss()
-//        }
-//    }
-
 }
 

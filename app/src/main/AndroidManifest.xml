@@ -10,21 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo">
         <activity android:name=".ManualUsuario"></activity>
-        <activity android:name=".RegistroUsuario" />
-        <activity android:name=".DataUpdatedView" />
-        <activity android:name=".FilteredData" />
-        <activity
-            android:name=".MenuAdmin"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".SelectedQS"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".DataView"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Login"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Form1"
             android:screenOrientation="portrait"
