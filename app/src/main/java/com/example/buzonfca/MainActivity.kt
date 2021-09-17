@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        internetConnection()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val database = FirebaseDatabase.getInstance()
@@ -76,7 +77,8 @@ class MainActivity : AppCompatActivity(){
 
 
 }
-/* private fun internetConnection(){
+ private fun internetConnection(){
+     val context = this
      val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
      val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
      val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
@@ -87,6 +89,6 @@ class MainActivity : AppCompatActivity(){
          Toast.makeText(this, "There's NO wifi", Toast.LENGTH_SHORT).show()
      }
 
- }*/
+ }
 
 }
