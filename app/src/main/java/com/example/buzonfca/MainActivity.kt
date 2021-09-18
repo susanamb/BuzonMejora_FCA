@@ -4,8 +4,11 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.NetworkInfo
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +19,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        internetConnection()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val database = FirebaseDatabase.getInstance()
@@ -25,9 +27,22 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val iniciarbtn = findViewById<iniciarbtn>(R.id.Button)
+        val con = this
+        val internet = isOnline(con)
+        if (internet){
+            Toast.makeText(this, "TAS CONECTAO", Toast.LENGTH_SHORT).show()
+            Log.d("Hello", " THERES WIFI")
+        }else{
+            Toast.makeText(this, "NO TAS CONECTAO", Toast.LENGTH_SHORT).show()
+            Log.d("Hello", " THERES NOO WIFI")
+            iniciarbtn.isEnabled = false
+            val alerta = AlertDialog.Builder(this@MainActivity)
+            alerta.setMessage("No tienes conexion a internet")
+            val titulo = alerta.create()
+            titulo.setTitle("Error")
+            titulo.show()
+        }
 
-        //internetConnection()
         //BOTON PARA PANTALLA DE REALIZAR UNA NUEVA QUEJA O SUGERENCIA
         iniciarbtn.setOnClickListener{
             val intent = Intent(this, Form1::class.java)
@@ -77,7 +92,23 @@ class MainActivity : AppCompatActivity(){
 
 
 }
- private fun internetConnection(){
+   private fun isOnline(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                //It will check for both wifi and cellular network
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
+        }
+    }
+ /*private fun internetConnection(){
      val context = this
      val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
      val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
@@ -89,6 +120,6 @@ class MainActivity : AppCompatActivity(){
          Toast.makeText(this, "There's NO wifi", Toast.LENGTH_SHORT).show()
      }
 
- }
+ }*/
 
 }
