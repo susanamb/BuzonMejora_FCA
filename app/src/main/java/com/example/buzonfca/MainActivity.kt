@@ -30,14 +30,14 @@ class MainActivity : AppCompatActivity(){
         val con = this
         val internet = isOnline(con)
         if (internet){
-            Toast.makeText(this, "TAS CONECTAO", Toast.LENGTH_SHORT).show()
-            Log.d("Hello", " THERES WIFI")
+            iniciarbtn.isEnabled = true
+            consul.isEnabled = true
         }else{
-            Toast.makeText(this, "NO TAS CONECTAO", Toast.LENGTH_SHORT).show()
-            Log.d("Hello", " THERES NOO WIFI")
             iniciarbtn.isEnabled = false
+            consul.isEnabled = false
             val alerta = AlertDialog.Builder(this@MainActivity)
-            alerta.setMessage("No tienes conexion a internet")
+            alerta.setMessage("Necesitas una conexion a internet")
+                    .setPositiveButton("Ok") { dialog, which -> dialog.cancel() }
             val titulo = alerta.create()
             titulo.setTitle("Error")
             titulo.show()
